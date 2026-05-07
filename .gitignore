@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment
+.env
+.env.local
+*.env
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+
+# Vector stores
+chroma_db/
+*.chroma/
+pinecone_index/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Temp
+*.tmp
+*.bak
+*.swp
+
+# Claude session data
+.claude/session-data/
