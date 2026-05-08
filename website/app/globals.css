@@ -4,23 +4,23 @@
 @plugin "@tailwindcss/aspect-ratio";
 
 @theme {
-  /* Colors */
-  --color-linen: #F5F0E8;
-  --color-linen-light: #FAF8F5;
-  --color-linen-dark: #E8DFD0;
-  --color-sand: #E8DFD0;
-  --color-terracotta: #C4622D;
-  --color-terracotta-deep: #A34E22;
-  --color-terracotta-light: #F0D5C5;
-  --color-gold: #B8860B;
-  --color-gold-warm: #D4A017;
-  --color-gold-light: #F5E9C4;
-  --color-onyx: #1A1714;
-  --color-espresso: #2D2520;
-  --color-bark: #5C4A3A;
-  --color-driftwood: #8C7B6B;
-  --color-mist: #C4B8AB;
-  --color-cloud: #EDE8E1;
+  /* Stitch Modern Editorial Commerce — Navy / Teal / Neutral */
+  --color-linen: #F8F9FA;
+  --color-linen-light: #FFFFFF;
+  --color-linen-dark: #F3F4F5;
+  --color-sand: #F3F4F5;
+  --color-terracotta: #1D2D6B;
+  --color-terracotta-deep: #021656;
+  --color-terracotta-light: #DDE1FF;
+  --color-gold: #006a6a;
+  --color-gold-warm: #2BBDBD;
+  --color-gold-light: #74F6F6;
+  --color-onyx: #191c1d;
+  --color-espresso: #191c1d;
+  --color-bark: #454650;
+  --color-driftwood: #767681;
+  --color-mist: #C6C5D1;
+  --color-cloud: #EDEEEF;
   --color-success: #2D6A4F;
   --color-success-light: #D8F0E6;
   --color-warning: #92400E;
@@ -28,30 +28,29 @@
   --color-error: #991B1B;
   --color-error-light: #FEE2E2;
 
-  /* Font families */
-  --font-heading: var(--font-cormorant), Georgia, serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  /* Font families — Playfair Display + Manrope */
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
 
   /* Font sizes */
   --font-size-display: 4.5rem;
   --line-height-display: 1.05;
-  --letter-spacing-display: -0.03em;
+  --letter-spacing-display: -0.02em;
 
   /* Max widths */
-  --max-w-site: 1280px;
+  --max-w-site: 1440px;
   --max-w-prose-lg: 72ch;
   --max-w-narrow: 680px;
 
-  /* Box shadows */
-  --shadow-card: 0 2px 8px rgba(26, 23, 20, 0.06);
-  --shadow-card-hover: 0 8px 24px rgba(26, 23, 20, 0.10);
-  --shadow-nav: 0 1px 0 rgba(26, 23, 20, 0.08);
+  /* Shadows — whisper shadow (Stitch spec: 10% navy tint, 20-40px blur) */
+  --shadow-card: 0 2px 8px rgba(29, 45, 107, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(29, 45, 107, 0.10);
+  --shadow-nav: 0 1px 0 rgba(29, 45, 107, 0.08);
+  --shadow-whisper: 0 20px 40px -10px rgba(29, 45, 107, 0.10);
 
-  /* Keyframes */
   --animate-fade-up: fade-up 0.4s ease-out forwards;
   --animate-fade-in: fade-in 0.3s ease-out forwards;
 
-  /* Screens */
   --breakpoint-xs: 375px;
 }
 
@@ -66,17 +65,17 @@
 }
 
 :root {
-  --font-heading: var(--font-cormorant), Georgia, serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-heading: var(--font-playfair), Georgia, serif;
+  --font-body: var(--font-manrope), system-ui, sans-serif;
 }
 
 :focus-visible {
-  outline: 2px solid #C4622D;
+  outline: 2px solid #1D2D6B;
   outline-offset: 3px;
 }
 
 .dark-bg :focus-visible {
-  outline-color: #F5F0E8;
+  outline-color: #F8F9FA;
 }
 
 html {
@@ -84,12 +83,41 @@ html {
 }
 
 body {
-  background-color: #F5F0E8;
-  color: #1A1714;
+  background-color: #F8F9FA;
+  color: #191c1d;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* SectionReveal — CSS-only scroll animation (no Framer Motion dependency) */
+.sr-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.sr-visible {
+  animation: sr-reveal 0.4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+@keyframes sr-reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sr-hidden {
+    transform: none;
+  }
+  .sr-visible {
+    animation: sr-fade 0.3s linear forwards;
+  }
+  @keyframes sr-fade {
+    to { opacity: 1; }
+  }
 }

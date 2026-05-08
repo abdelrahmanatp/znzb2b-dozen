@@ -60,3 +60,4 @@ service_account.json
 
 # Raw input documents (PDFs, source materials) — large binaries, not version-controlled
 _context/
+website/lh-*.json

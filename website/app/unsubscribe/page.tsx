@@ -93,12 +93,12 @@ function UnsubscribeContent() {
         <button
           onClick={handleConfirm}
           disabled={status === 'loading'}
-          className="inline-flex items-center justify-center bg-terracotta text-white px-8 py-4 text-sm tracking-widest uppercase font-semibold font-body min-w-[200px] hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none disabled:bg-mist disabled:text-driftwood disabled:cursor-not-allowed"
+          className="inline-flex items-center justify-center bg-terracotta text-white px-8 py-4 text-sm tracking-widest uppercase font-semibold font-body min-w-[200px] hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none disabled:bg-mist disabled:text-bark disabled:cursor-not-allowed"
         >
           {status === 'loading' ? 'Processing…' : 'Confirm Unsubscribe'}
         </button>
 
-        <p className="text-xs font-body text-driftwood mt-6">
+        <p className="text-xs font-body text-bark mt-6">
           This will permanently stop all marketing communications. Transactional emails related to
           existing orders will not be affected.
         </p>

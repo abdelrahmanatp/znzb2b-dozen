@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useReducedMotion, type Variants } from 'framer-motion'
-import { ReactNode } from 'react'
+import { useEffect, useRef } from 'react'
+import type { ReactNode } from 'react'
 
 interface SectionRevealProps {
   children: ReactNode
@@ -10,35 +10,30 @@ interface SectionRevealProps {
 }
 
 export default function SectionReveal({ children, className = '', delay = 0 }: SectionRevealProps) {
-  const prefersReduced = useReducedMotion()
+  const ref = useRef<HTMLDivElement>(null)
 
-  const variants: Variants = prefersReduced
-    ? {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.3, delay } },
-      }
-    : {
-        hidden: { opacity: 0, y: 24 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            duration: 0.4,
-            ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
-            delay,
-          },
-        },
-      }
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.style.animationDelay = delay > 0 ? `${delay}s` : ''
+          el.classList.add('sr-visible')
+          observer.unobserve(el)
+        }
+      },
+      { rootMargin: '-80px' }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [delay])
 
   return (
-    <motion.div
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-80px' }}
-      className={className}
-    >
+    <div ref={ref} className={`sr-hidden ${className}`}>
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -52,7 +52,7 @@ export default function BathrobesPage() {
   return (
     <>
       <nav aria-label="Breadcrumb" className="bg-linen border-b border-cloud py-3 px-5 md:px-8">
-        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-driftwood">
+        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-bark">
           <li><Link href="/" className="hover:text-onyx transition-colors duration-150">Home</Link></li>
           <li aria-hidden="true">/</li>
           <li><Link href="/products" className="hover:text-onyx transition-colors duration-150">Products</Link></li>
@@ -93,7 +93,7 @@ export default function BathrobesPage() {
                           ['Customization', product.customization],
                         ].map(([label, value]) => (
                           <tr key={label}>
-                            <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 w-2/5 border-r border-cloud border-t border-cloud">
+                            <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 w-2/5 border-r border-cloud border-t border-cloud">
                               {label}
                             </th>
                             <td className="text-sm text-bark px-4 py-3 border-t border-cloud">{value}</td>
@@ -104,7 +104,7 @@ export default function BathrobesPage() {
                   </div>
 
                   <p className="text-sm font-body font-medium text-terracotta mb-1">{product.priceRange}</p>
-                  <p className="text-xs font-body text-driftwood mb-4">
+                  <p className="text-xs font-body text-bark mb-4">
                     Indicative pricing — VAT not included. Contact us for a formal quote.
                   </p>
                   <p className="text-sm font-body text-bark italic border-l-2 border-gold pl-3 mb-4">
@@ -128,9 +128,9 @@ export default function BathrobesPage() {
                 <table className="w-full border-collapse border border-cloud text-left max-w-lg">
                   <thead>
                     <tr>
-                      <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Size</th>
-                      <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Dress Size</th>
-                      <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-b border-cloud">International</th>
+                      <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Size</th>
+                      <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Dress Size</th>
+                      <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-b border-cloud">International</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -144,7 +144,7 @@ export default function BathrobesPage() {
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs font-body text-driftwood mt-4">
+              <p className="text-xs font-body text-bark mt-4">
                 Bulk discounts available for orders of 50+ units. Lead times for custom embroidery typically 2–4 weeks.
               </p>
             </div>

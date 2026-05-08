@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import ClientLogo from '@/components/ClientLogo'
 import SectionReveal from '@/components/SectionReveal'
 
@@ -35,27 +36,69 @@ const productCategories = [
   'Kitchen & Sanitation (kitchen towels, glass cloths, dusters)',
 ]
 
+const stats = [
+  { value: '300+', label: 'Product SKUs' },
+  { value: '98%', label: 'Quality Assurance' },
+  { value: '30+', label: 'Properties Supplied' },
+]
+
 export default function AboutPage() {
   return (
     <>
-      <div className="bg-sand py-16 md:py-20 border-b border-cloud">
-        <div className="max-w-site mx-auto px-5 md:px-8">
-          <p className="text-xs font-body font-semibold uppercase tracking-[0.2em] text-gold mb-4">
+      {/* Editorial dark header — Stitch "Articulating the Standard of Luxury" */}
+      <div className="relative bg-terracotta-deep overflow-hidden py-24 md:py-32 min-h-[400px] flex items-end">
+        <Image
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=60&auto=format&fit=crop&fm=webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          aria-hidden="true"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to top, rgba(2,22,86,0.96) 0%, rgba(2,22,86,0.70) 50%, rgba(2,22,86,0.40) 100%)',
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 max-w-site mx-auto px-5 md:px-16 w-full">
+          <p className="text-xs font-body font-bold uppercase tracking-[0.15em] text-gold mb-5">
             Our Story
           </p>
-          <h1 className="text-4xl md:text-5xl font-heading font-medium text-onyx">About Dozen</h1>
-          <p className="text-lg font-body text-bark mt-4 max-w-prose-lg">
-            Egyptian-origin hotel supplies. Zanzibar presence. Hospitality-grade quality.
+          <h1 className="text-4xl md:text-6xl font-heading font-bold text-white leading-[1.08] tracking-[-0.02em] max-w-2xl">
+            A Legacy in Tourism.
+          </h1>
+          <p className="text-lg font-body text-white/70 mt-5 max-w-prose-lg">
+            Egyptian-origin hotel supplies. Zanzibar presence. Hospitality-grade quality for every property type.
           </p>
+
+          {/* Stats bar */}
+          <div className="mt-12 pt-8 border-t border-white/15 flex flex-wrap gap-10">
+            {stats.map(({ value, label }) => (
+              <div key={label}>
+                <p className="text-2xl font-heading font-bold text-white">{value}</p>
+                <p className="text-xs font-body uppercase tracking-[0.1em] mt-1" style={{ color: 'rgba(255,255,255,0.50)' }}>
+                  {label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
+      {/* Who We Are + Location */}
       <section className="bg-linen py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <SectionReveal>
               <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-medium text-onyx mb-6">
+                <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-4">
+                  Global Reach, Local Precision
+                </p>
+                <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-6">
                   Who We Are
                 </h2>
                 <div className="space-y-4 text-base font-body text-bark leading-relaxed">
@@ -81,33 +124,49 @@ export default function AboutPage() {
             </SectionReveal>
 
             <SectionReveal delay={0.1}>
-              <div className="bg-sand border border-cloud p-8">
-                <h3 className="text-xl font-heading font-medium text-onyx mb-6">Our Location</h3>
-                <address className="not-italic text-base font-body text-bark leading-relaxed">
-                  <strong className="font-semibold text-onyx">Dozen Hotel Supplies</strong><br />
-                  303 Silversand, Kibweni<br />
-                  P.O. Box 4212<br />
-                  Zanzibar, Tanzania
-                </address>
-                <div className="mt-6 pt-6 border-t border-cloud space-y-2">
-                  <p className="text-sm font-body">
-                    <span className="text-driftwood">General enquiries: </span>
-                    <a
-                      href="mailto:info@dozensupplies.com"
-                      className="text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-                    >
-                      info@dozensupplies.com
-                    </a>
+              <div>
+                {/* Ethical Sourcing block */}
+                <div className="bg-white border border-cloud p-8 mb-6">
+                  <div className="w-8 h-[2px] bg-gold mb-5" aria-hidden="true" />
+                  <h3 className="text-lg font-heading font-semibold text-onyx mb-3">Ethical Sourcing</h3>
+                  <p className="text-sm font-body text-bark leading-relaxed">
+                    All textiles are sourced from certified Egyptian cotton mills. We work directly with
+                    manufacturers — no intermediaries — ensuring full traceability from raw fibre to finished
+                    product.
                   </p>
-                  <p className="text-sm font-body">
-                    <span className="text-driftwood">Privacy & data: </span>
-                    <a
-                      href="mailto:privacy@dozensupplies.com"
-                      className="text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
-                    >
-                      privacy@dozensupplies.com
-                    </a>
+                </div>
+
+                {/* Quality Assurance block */}
+                <div className="bg-white border border-cloud p-8 mb-6">
+                  <div className="w-8 h-[2px] bg-gold mb-5" aria-hidden="true" />
+                  <p className="text-3xl font-heading font-bold text-terracotta mb-2">98%</p>
+                  <h3 className="text-lg font-heading font-semibold text-onyx mb-3">Quality Assurance</h3>
+                  <p className="text-sm font-body text-bark leading-relaxed">
+                    98% of batches pass first-inspection standards. Every delivery includes QA documentation
+                    with GSM verification, shrinkage test results, and wash fastness ratings.
                   </p>
+                </div>
+
+                {/* Location block */}
+                <div className="bg-white border border-cloud p-8">
+                  <h3 className="text-lg font-heading font-semibold text-onyx mb-4">Our Location</h3>
+                  <address className="not-italic text-sm font-body text-bark leading-relaxed">
+                    <strong className="font-semibold text-onyx">Dozen Hotel Supplies</strong><br />
+                    303 Silversand, Kibweni<br />
+                    P.O. Box 4212<br />
+                    Zanzibar, Tanzania
+                  </address>
+                  <div className="mt-5 pt-5 border-t border-cloud space-y-2">
+                    <p className="text-sm font-body">
+                      <span className="text-bark">General enquiries: </span>
+                      <a
+                        href="mailto:info@dozensupplies.com"
+                        className="text-terracotta hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta"
+                      >
+                        info@dozensupplies.com
+                      </a>
+                    </p>
+                  </div>
                 </div>
               </div>
             </SectionReveal>
@@ -115,10 +174,14 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* What We Supply */}
       <section className="bg-sand py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-medium text-onyx mb-6">
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Product Coverage
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-4">
               What We Supply
             </h2>
             <p className="text-lg font-body text-bark mb-10 max-w-prose-lg">
@@ -129,8 +192,8 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {productCategories.map((cat, i) => (
               <SectionReveal key={cat} delay={i * 0.05}>
-                <div className="bg-linen border border-cloud p-4 flex items-start gap-3">
-                  <span className="text-gold text-lg font-heading mt-0.5" aria-hidden="true">—</span>
+                <div className="bg-white border border-cloud p-5 flex items-start gap-4">
+                  <span className="text-gold font-heading text-xl mt-0.5 shrink-0" aria-hidden="true">—</span>
                   <p className="text-sm font-body text-bark">{cat}</p>
                 </div>
               </SectionReveal>
@@ -140,7 +203,7 @@ export default function AboutPage() {
           <SectionReveal className="mt-8">
             <Link
               href="/products"
-              className="inline-flex items-center justify-center border border-onyx text-onyx bg-transparent px-6 py-3 text-sm tracking-wider uppercase font-semibold font-body hover:bg-onyx hover:text-white transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-onyx focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="inline-flex items-center justify-center border-2 border-terracotta text-terracotta bg-transparent px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body hover:bg-terracotta hover:text-white transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               Browse Full Catalog
             </Link>
@@ -148,10 +211,14 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Our Clients */}
       <section className="bg-linen py-16 md:py-24" aria-label="Hotel clients who trust Dozen">
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-medium text-onyx mb-4">
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Our Partners
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-4">
               Our Clients
             </h2>
             <p className="text-lg font-body text-bark mb-10">

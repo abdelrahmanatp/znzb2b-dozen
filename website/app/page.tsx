@@ -26,6 +26,7 @@ const productCategories = [
     productCount: 6,
     priceFrom: 'From USD $0.95 / unit',
     category: 'Bath Towels',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'Bed Linen',
@@ -35,6 +36,7 @@ const productCategories = [
     productCount: 5,
     priceFrom: 'From USD $13.04 / sheet',
     category: 'Bed Linen',
+    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'Bedding',
@@ -44,6 +46,7 @@ const productCategories = [
     productCount: 8,
     priceFrom: 'From USD $2.00 / protector',
     category: 'Bedding',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'F&B Linen',
@@ -53,6 +56,7 @@ const productCategories = [
     productCount: 7,
     priceFrom: 'From USD $1.50 / napkin',
     category: 'F&B Linen',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'Bathrobes',
@@ -62,6 +66,7 @@ const productCategories = [
     productCount: 3,
     priceFrom: 'From USD $21.00 / robe',
     category: 'Bathrobes',
+    image: 'https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'Slippers',
@@ -71,6 +76,7 @@ const productCategories = [
     productCount: 3,
     priceFrom: 'From USD $1.10 / pair',
     category: 'Slippers',
+    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80&auto=format&fit=crop',
   },
   {
     title: 'Kitchen & Sanitation',
@@ -80,6 +86,7 @@ const productCategories = [
     productCount: 4,
     priceFrom: 'From USD $6.00 / dozen',
     category: 'Kitchen & Sanitation',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop',
   },
 ]
 
@@ -103,13 +110,14 @@ export default function HomePage() {
     <>
       <HeroSection />
 
+      {/* Trusted-by — client logos */}
       <section
-        className="bg-white py-16 md:py-24"
+        className="bg-white py-16 md:py-20"
         aria-label="Hotel clients who trust Dozen"
       >
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <p className="text-xs font-body font-semibold uppercase tracking-widest text-driftwood text-center mb-10">
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold text-center mb-10">
               Trusted by 30+ Zanzibar Properties
             </p>
           </SectionReveal>
@@ -122,7 +130,7 @@ export default function HomePage() {
             ))}
             <SectionReveal delay={clients.length * 0.05}>
               <div className="bg-cloud border border-cloud p-4 flex items-center justify-center h-[100px] md:h-[120px]">
-                <span className="text-xs font-body font-semibold uppercase tracking-wider text-driftwood text-center">
+                <span className="text-xs font-body font-bold uppercase tracking-[0.1em] text-bark text-center">
                   + 20 more properties
                 </span>
               </div>
@@ -131,10 +139,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Signature Collections — product cards */}
       <section className="bg-linen py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-medium text-onyx mb-4">
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Signature Collections
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-4">
               Our Product Range
             </h2>
             <p className="text-lg font-body text-bark max-w-prose-lg mb-12">
@@ -149,26 +161,36 @@ export default function HomePage() {
               </SectionReveal>
             ))}
           </div>
+
+          <SectionReveal delay={0.2} className="mt-10">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-xs font-body font-bold uppercase tracking-[0.12em] text-terracotta border-b border-terracotta pb-0.5 hover:text-terracotta-deep hover:border-terracotta-deep transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:outline-none"
+            >
+              View All Categories →
+            </Link>
+          </SectionReveal>
         </div>
       </section>
 
+      {/* Why Dozen — editorial reason columns */}
       <section className="bg-sand py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-8">
+        <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-medium text-onyx mb-12 text-center">
-              Why Dozen
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Why Discerning Hotels Choose Dozen
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-12">
+              Unrivaled Excellence in Every Detail
             </h2>
           </SectionReveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-0">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-mist">
             {whyDozen.map((item, i) => (
               <SectionReveal key={item.title} delay={i * 0.1}>
-                <div
-                  className={`p-6 md:p-8 border-l-2 border-gold ${
-                    i < whyDozen.length - 1 ? 'lg:border-r-0' : ''
-                  }`}
-                >
-                  <h3 className="text-2xl font-heading font-medium text-onyx mb-3">
+                <div className="p-6 md:p-10">
+                  <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
+                  <h3 className="text-xl font-heading font-semibold text-onyx mb-4">
                     {item.title}
                   </h3>
                   <p className="text-base font-body text-bark leading-relaxed">{item.body}</p>
@@ -179,22 +201,36 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CTA — navy dark section */}
       <section className="bg-terracotta py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-8 text-center">
-          <SectionReveal>
-            <h2 className="text-3xl md:text-4xl font-heading font-light text-white mb-6">
-              Ready to upgrade your property&apos;s linen?
-            </h2>
-            <p className="text-lg font-body text-white/80 mb-10 max-w-prose mx-auto">
-              We respond within 2 business days with indicative pricing and availability.
-            </p>
-            <Link
-              href="/quote"
-              className="inline-flex items-center justify-center bg-white text-terracotta px-8 py-4 text-sm tracking-widest uppercase font-semibold font-body min-w-[200px] hover:bg-linen transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-terracotta focus-visible:outline-none"
-            >
-              Get a Quote
-            </Link>
-          </SectionReveal>
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <div className="max-w-[600px]">
+            <SectionReveal>
+              <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold-light mb-4">
+                Let&apos;s Design Your Guest Experience
+              </p>
+              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-white mb-6">
+                Ready to upgrade your property&apos;s linen?
+              </h2>
+              <p className="text-lg font-body text-white/75 mb-10 max-w-prose">
+                We respond within 2 business days with indicative pricing and availability for any Zanzibar property.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/quote"
+                  className="inline-flex items-center justify-center bg-white text-terracotta px-8 py-4 text-xs tracking-[0.12em] uppercase font-bold font-body min-w-[200px] hover:bg-terracotta-light transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-terracotta focus-visible:outline-none"
+                >
+                  Get a Quote
+                </Link>
+                <Link
+                  href="/products"
+                  className="inline-flex items-center justify-center border border-white/30 text-white px-8 py-4 text-xs tracking-[0.12em] uppercase font-bold font-body min-w-[200px] hover:border-white/60 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-terracotta focus-visible:outline-none"
+                >
+                  Browse Products
+                </Link>
+              </div>
+            </SectionReveal>
+          </div>
         </div>
       </section>
     </>

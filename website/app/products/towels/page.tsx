@@ -88,7 +88,7 @@ export default function TowelsPage() {
         aria-label="Breadcrumb"
         className="bg-linen border-b border-cloud py-3 px-5 md:px-8"
       >
-        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-driftwood">
+        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-bark">
           <li>
             <Link href="/" className="hover:text-onyx transition-colors duration-150">
               Home
@@ -135,7 +135,7 @@ export default function TowelsPage() {
                     <table className="w-full border-collapse border border-cloud text-left">
                       <tbody>
                         <tr>
-                          <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 w-1/3 border-r border-cloud">
+                          <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 w-1/3 border-r border-cloud">
                             Material
                           </th>
                           <td className="text-sm text-bark px-4 py-3 border-t border-cloud">
@@ -143,14 +143,14 @@ export default function TowelsPage() {
                           </td>
                         </tr>
                         <tr>
-                          <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
+                          <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
                             Sizes
                           </th>
                           <td className="text-sm text-bark px-4 py-3 border-t border-cloud">
                             {product.sizes.map((s) => (
                               <span
                                 key={s}
-                                className="inline-flex items-center px-2 py-0.5 text-xs font-body text-driftwood border border-cloud bg-white mr-1 mb-1"
+                                className="inline-flex items-center px-2 py-0.5 text-xs font-body text-bark border border-cloud bg-white mr-1 mb-1"
                               >
                                 {s}
                               </span>
@@ -158,7 +158,7 @@ export default function TowelsPage() {
                           </td>
                         </tr>
                         <tr>
-                          <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
+                          <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
                             GSM
                           </th>
                           <td className="text-sm text-bark px-4 py-3 border-t border-cloud">
@@ -166,7 +166,7 @@ export default function TowelsPage() {
                           </td>
                         </tr>
                         <tr>
-                          <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
+                          <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
                             Colors
                           </th>
                           <td className="text-sm text-bark px-4 py-3 border-t border-cloud">
@@ -174,7 +174,7 @@ export default function TowelsPage() {
                           </td>
                         </tr>
                         <tr>
-                          <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
+                          <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-t border-cloud">
                             Customization
                           </th>
                           <td className="text-sm text-bark px-4 py-3 border-t border-cloud">
@@ -188,7 +188,7 @@ export default function TowelsPage() {
                   <p className="text-sm font-body font-medium text-terracotta mb-1">
                     {product.priceRange}
                   </p>
-                  <p className="text-xs font-body text-driftwood mb-4">
+                  <p className="text-xs font-body text-bark mb-4">
                     Indicative pricing — VAT not included. Contact us for a formal quote.
                   </p>
 

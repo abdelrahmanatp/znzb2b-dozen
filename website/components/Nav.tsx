@@ -19,7 +19,7 @@ export default function Nav() {
   const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 80)
+    const handleScroll = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -40,30 +40,41 @@ export default function Nav() {
     return () => document.removeEventListener('keydown', handleKey)
   }, [mobileOpen])
 
+  const isHome = pathname === '/'
+
   return (
     <nav
       aria-label="Main navigation"
-      className={`bg-linen/95 backdrop-blur-sm sticky top-0 z-50 border-b border-cloud transition-shadow duration-200 ${
-        scrolled ? 'shadow-nav' : ''
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        scrolled || !isHome || mobileOpen
+          ? 'bg-white/95 backdrop-blur-md border-b border-mist shadow-nav'
+          : 'bg-[#021656]/70 backdrop-blur-sm border-b border-white/10'
       }`}
     >
-      <div className="max-w-site mx-auto px-5 md:px-8 h-[72px] flex items-center justify-between">
+      <div className="max-w-site mx-auto px-5 md:px-16 h-[72px] flex items-center justify-between">
+        {/* Logo */}
         <Link
           href="/"
-          className="font-heading font-medium text-onyx text-xl tracking-[0.15em] uppercase focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="font-heading font-bold text-xl tracking-[0.12em] uppercase transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+          style={{ color: scrolled || !isHome || mobileOpen ? '#021656' : '#ffffff' }}
         >
           DOZEN
         </Link>
 
-        <ul role="list" className="hidden md:flex items-center gap-8">
+        {/* Desktop links — Label-Caps per Stitch spec */}
+        <ul role="list" className="hidden md:flex items-center gap-10">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
                 href={href}
-                className={`text-xs font-body font-semibold uppercase tracking-widest transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none ${
-                  pathname.startsWith(href)
-                    ? 'text-terracotta border-b border-terracotta pb-[2px]'
-                    : 'text-bark hover:text-onyx'
+                className={`text-xs font-body font-bold uppercase tracking-[0.12em] transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none ${
+                  scrolled || !isHome || mobileOpen
+                    ? pathname.startsWith(href)
+                      ? 'text-terracotta border-b-2 border-terracotta pb-[2px]'
+                      : 'text-bark hover:text-onyx'
+                    : pathname.startsWith(href)
+                      ? 'text-white border-b-2 border-white pb-[2px]'
+                      : 'text-white/75 hover:text-white'
                 }`}
               >
                 {label}
@@ -72,27 +83,32 @@ export default function Nav() {
           ))}
         </ul>
 
-        <div className="hidden md:block ml-8">
+        {/* Desktop CTA — solid navy */}
+        <div className="hidden md:block">
           <Link
             href="/quote"
-            className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-6 py-3 text-sm tracking-wider uppercase font-semibold font-body transition-colors duration-200 hover:bg-terracotta-deep focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none min-w-[160px]"
+            className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body transition-colors duration-200 hover:bg-terracotta-deep focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none min-w-[160px]"
           >
             Request a Quote
           </Link>
         </div>
 
+        {/* Mobile hamburger */}
         <button
           ref={hamburgerRef}
           aria-label={mobileOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           onClick={() => setMobileOpen((v) => !v)}
-          className="md:hidden p-2 text-onyx focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+          className={`md:hidden p-2 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none ${
+            scrolled || !isHome || mobileOpen ? 'text-onyx' : 'text-white'
+          }`}
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
+      {/* Mobile drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -102,7 +118,7 @@ export default function Nav() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="md:hidden bg-linen border-b border-cloud w-full overflow-hidden"
+            className="md:hidden bg-white border-b border-mist w-full overflow-hidden"
           >
             <ul role="list" className="flex flex-col">
               {navLinks.map(({ href, label }) => (
@@ -121,7 +137,7 @@ export default function Nav() {
             <div className="mx-5 my-4">
               <Link
                 href="/quote"
-                className="block w-full text-center bg-terracotta text-white px-6 py-3 text-sm tracking-wider uppercase font-semibold font-body hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="block w-full text-center bg-terracotta text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 Request a Quote
               </Link>

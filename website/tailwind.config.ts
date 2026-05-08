@@ -9,28 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Stitch "Modern Editorial Commerce" — Navy / Teal / Neutral
+        // Token names preserved for backward-compat; values updated to new brand
         linen: {
-          DEFAULT: '#F5F0E8',
-          light: '#FAF8F5',
-          dark: '#E8DFD0',
+          DEFAULT: '#F8F9FA',   // surface
+          light: '#FFFFFF',     // surface-container-lowest
+          dark: '#F3F4F5',      // surface-container-low
         },
-        sand: '#E8DFD0',
+        sand: '#F3F4F5',        // surface-container-low (section alternates)
         terracotta: {
-          DEFAULT: '#C4622D',
-          deep: '#A34E22',
-          light: '#F0D5C5',
+          DEFAULT: '#1D2D6B',   // primary-container (heritage navy)
+          deep: '#021656',      // primary (deep navy)
+          light: '#DDE1FF',     // primary-fixed (light navy tint)
         },
         gold: {
-          DEFAULT: '#B8860B',
-          warm: '#D4A017',
-          light: '#F5E9C4',
+          DEFAULT: '#006a6a',   // secondary (teal)
+          warm: '#2BBDBD',      // brighter teal
+          light: '#74F6F6',     // secondary-container
         },
-        onyx: '#1A1714',
-        espresso: '#2D2520',
-        bark: '#5C4A3A',
-        driftwood: '#8C7B6B',
-        mist: '#C4B8AB',
-        cloud: '#EDE8E1',
+        onyx: '#191c1d',        // on-surface (near-black)
+        espresso: '#191c1d',
+        bark: '#454650',        // on-surface-variant (body text)
+        driftwood: '#767681',   // outline (muted text)
+        mist: '#C6C5D1',        // outline-variant (borders)
+        cloud: '#EDEEEF',       // surface-container (subtle bg)
         success: {
           DEFAULT: '#2D6A4F',
           light: '#D8F0E6',
@@ -45,20 +47,20 @@ const config: Config = {
         },
       },
       fontFamily: {
-        heading: ['var(--font-cormorant)', 'Georgia', 'serif'],
-        body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-playfair)', 'Georgia', 'serif'],
+        body: ['var(--font-manrope)', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        display: ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        display: ['4.5rem', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
       },
       maxWidth: {
-        site: '1280px',
+        site: '1440px',
         'prose-lg': '72ch',
         narrow: '680px',
       },
       spacing: {
-        'section-y': '6rem',
-        'section-y-sm': '4rem',
+        'section-y': '8rem',
+        'section-y-sm': '5rem',
       },
       borderRadius: {
         DEFAULT: '0px',
@@ -67,10 +69,11 @@ const config: Config = {
         full: '9999px',
       },
       boxShadow: {
-        card: '0 2px 8px rgba(26, 23, 20, 0.06)',
-        'card-hover': '0 8px 24px rgba(26, 23, 20, 0.10)',
-        nav: '0 1px 0 rgba(26, 23, 20, 0.08)',
-        dropdown: '0 4px 16px rgba(26, 23, 20, 0.12)',
+        card: '0 2px 8px rgba(29, 45, 107, 0.06)',
+        'card-hover': '0 8px 24px rgba(29, 45, 107, 0.10)',
+        nav: '0 1px 0 rgba(29, 45, 107, 0.08)',
+        dropdown: '0 4px 16px rgba(29, 45, 107, 0.10)',
+        whisper: '0 20px 40px -10px rgba(29, 45, 107, 0.10)',
       },
       keyframes: {
         'fade-up': {
@@ -87,8 +90,8 @@ const config: Config = {
         'fade-in': 'fade-in 0.3s ease-out forwards',
       },
       backgroundImage: {
-        'linen-texture':
-          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")",
+        'editorial-gradient':
+          'linear-gradient(to right, rgba(2, 22, 86, 0.05) 0%, rgba(255,255,255,0) 100%)',
       },
       screens: {
         xs: '375px',

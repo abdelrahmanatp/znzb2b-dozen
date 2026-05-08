@@ -12,7 +12,7 @@ export default function PrivacyPage() {
       <div className="bg-sand py-16 md:py-20 border-b border-cloud">
         <div className="max-w-site mx-auto px-5 md:px-8">
           <h1 className="text-4xl md:text-5xl font-heading font-medium text-onyx">Privacy Policy</h1>
-          <p className="text-sm font-body text-driftwood mt-3">Last updated: 2026-05-08</p>
+          <p className="text-sm font-body text-bark mt-3">Last updated: 2026-05-08</p>
         </div>
       </div>
 
@@ -127,8 +127,8 @@ export default function PrivacyPage() {
                 <table className="w-full border-collapse border border-cloud text-left text-sm">
                   <thead>
                     <tr>
-                      <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Data Category</th>
-                      <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-b border-cloud">Retention Period</th>
+                      <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud">Data Category</th>
+                      <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-b border-cloud">Retention Period</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -210,7 +210,7 @@ export default function PrivacyPage() {
                   <thead>
                     <tr>
                       {['Processor', 'Purpose', 'Location'].map((h) => (
-                        <th key={h} className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud last:border-r-0">
+                        <th key={h} className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 border-r border-cloud border-b border-cloud last:border-r-0">
                           {h}
                         </th>
                       ))}

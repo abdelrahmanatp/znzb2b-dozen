@@ -28,6 +28,12 @@ const QUANTITY_OPTIONS = [
   '500+ units',
 ]
 
+const inputBase =
+  'w-full bg-white border text-onyx px-4 py-3 text-base font-body placeholder:text-bark/80 rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta transition-colors duration-150'
+
+const inputError = 'border-error ring-1 ring-error bg-error-light/20'
+const inputNormal = 'border-mist'
+
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false)
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
@@ -77,7 +83,7 @@ export default function QuoteForm() {
     return (
       <div className="max-w-narrow mx-auto px-5 md:px-0 py-16 text-center">
         <div className="bg-success-light border border-success/20 p-8">
-          <p className="text-2xl font-heading font-medium text-onyx mb-3">Thank you</p>
+          <p className="text-2xl font-heading font-semibold text-onyx mb-3">Thank you</p>
           <p className="text-base font-body text-bark">
             We&apos;ll be in touch within 2 business days with indicative pricing and availability.
           </p>
@@ -94,7 +100,7 @@ export default function QuoteForm() {
       className="max-w-narrow mx-auto space-y-6"
     >
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="propertyName" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="propertyName" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Property Name <span aria-hidden="true" className="text-error">*</span>
         </label>
         <input
@@ -106,9 +112,7 @@ export default function QuoteForm() {
           aria-describedby={errors.propertyName ? 'propertyName-error' : undefined}
           aria-invalid={errors.propertyName ? 'true' : undefined}
           placeholder="e.g. Baraza Resort & Spa"
-          className={`w-full bg-white border text-onyx px-4 py-3 text-base font-body placeholder:text-driftwood rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta ${
-            errors.propertyName ? 'border-error ring-1 ring-error bg-error-light/20' : 'border-mist'
-          }`}
+          className={`${inputBase} ${errors.propertyName ? inputError : inputNormal}`}
         />
         {errors.propertyName && (
           <p id="propertyName-error" className="text-sm font-body text-error mt-1.5">
@@ -118,7 +122,7 @@ export default function QuoteForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="propertyType" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="propertyType" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Property Type <span aria-hidden="true" className="text-error">*</span>
         </label>
         <select
@@ -128,9 +132,7 @@ export default function QuoteForm() {
           aria-required="true"
           aria-describedby={errors.propertyType ? 'propertyType-error' : undefined}
           aria-invalid={errors.propertyType ? 'true' : undefined}
-          className={`w-full bg-white border text-onyx px-4 py-3 text-base font-body rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta appearance-none cursor-pointer ${
-            errors.propertyType ? 'border-error ring-1 ring-error bg-error-light/20' : 'border-mist'
-          }`}
+          className={`${inputBase} appearance-none cursor-pointer ${errors.propertyType ? inputError : inputNormal}`}
         >
           <option value="">Select property type</option>
           {PROPERTY_TYPES.map((t) => (
@@ -145,7 +147,7 @@ export default function QuoteForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="contactName" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="contactName" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Contact Name <span aria-hidden="true" className="text-error">*</span>
         </label>
         <input
@@ -157,9 +159,7 @@ export default function QuoteForm() {
           aria-describedby={errors.contactName ? 'contactName-error' : undefined}
           aria-invalid={errors.contactName ? 'true' : undefined}
           placeholder="Your full name"
-          className={`w-full bg-white border text-onyx px-4 py-3 text-base font-body placeholder:text-driftwood rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta ${
-            errors.contactName ? 'border-error ring-1 ring-error bg-error-light/20' : 'border-mist'
-          }`}
+          className={`${inputBase} ${errors.contactName ? inputError : inputNormal}`}
         />
         {errors.contactName && (
           <p id="contactName-error" className="text-sm font-body text-error mt-1.5">
@@ -169,7 +169,7 @@ export default function QuoteForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="email" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="email" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Email Address <span aria-hidden="true" className="text-error">*</span>
         </label>
         <input
@@ -181,9 +181,7 @@ export default function QuoteForm() {
           aria-describedby={errors.email ? 'email-error' : undefined}
           aria-invalid={errors.email ? 'true' : undefined}
           placeholder="procurement@yourproperty.com"
-          className={`w-full bg-white border text-onyx px-4 py-3 text-base font-body placeholder:text-driftwood rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta ${
-            errors.email ? 'border-error ring-1 ring-error bg-error-light/20' : 'border-mist'
-          }`}
+          className={`${inputBase} ${errors.email ? inputError : inputNormal}`}
         />
         {errors.email && (
           <p id="email-error" className="text-sm font-body text-error mt-1.5">
@@ -193,21 +191,21 @@ export default function QuoteForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="whatsapp" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="whatsapp" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           WhatsApp Number{' '}
-          <span className="text-driftwood font-normal">(optional)</span>
+          <span className="text-bark font-normal normal-case">(optional)</span>
         </label>
         <input
           id="whatsapp"
           name="whatsapp"
           type="tel"
           placeholder="+255 7XX XXX XXX"
-          className="w-full bg-white border border-mist text-onyx px-4 py-3 text-base font-body placeholder:text-driftwood rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta"
+          className={`${inputBase} ${inputNormal}`}
         />
       </div>
 
       <fieldset>
-        <legend className="text-sm font-body font-semibold text-espresso mb-3">
+        <legend className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso mb-3">
           Products of Interest{' '}
           <span aria-hidden="true" className="text-error">*</span>
         </legend>
@@ -242,14 +240,14 @@ export default function QuoteForm() {
       </fieldset>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="quantity" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="quantity" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Estimated Quantity{' '}
-          <span className="text-driftwood font-normal">(optional)</span>
+          <span className="text-bark font-normal normal-case">(optional)</span>
         </label>
         <select
           id="quantity"
           name="quantity"
-          className="w-full bg-white border border-mist text-onyx px-4 py-3 text-base font-body rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta appearance-none cursor-pointer"
+          className={`${inputBase} ${inputNormal} appearance-none cursor-pointer`}
         >
           <option value="">Select estimated quantity</option>
           {QUANTITY_OPTIONS.map((q) => (
@@ -259,7 +257,7 @@ export default function QuoteForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="message" className="text-sm font-body font-semibold text-espresso">
+        <label htmlFor="message" className="text-xs font-body font-bold uppercase tracking-[0.1em] text-espresso">
           Message / Special Requirements <span aria-hidden="true" className="text-error">*</span>
         </label>
         <textarea
@@ -270,9 +268,7 @@ export default function QuoteForm() {
           aria-describedby={errors.message ? 'message-error' : undefined}
           aria-invalid={errors.message ? 'true' : undefined}
           placeholder="Please describe your requirements, room count, preferred colors, or any customisation needs..."
-          className={`w-full bg-white border text-onyx px-4 py-3 text-base font-body placeholder:text-driftwood rounded-none focus:border-terracotta focus:outline-none focus:ring-1 focus:ring-terracotta resize-y min-h-[120px] max-h-[400px] ${
-            errors.message ? 'border-error ring-1 ring-error bg-error-light/20' : 'border-mist'
-          }`}
+          className={`${inputBase} resize-y min-h-[120px] max-h-[400px] ${errors.message ? inputError : inputNormal}`}
         />
         {errors.message && (
           <p id="message-error" className="text-sm font-body text-error mt-1.5">
@@ -284,11 +280,11 @@ export default function QuoteForm() {
       <div className="mt-8">
         <button
           type="submit"
-          className="w-full sm:w-auto inline-flex items-center justify-center bg-terracotta text-white px-8 py-4 text-sm tracking-widest uppercase font-semibold font-body min-w-[200px] hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="w-full sm:w-auto inline-flex items-center justify-center bg-terracotta text-white px-8 py-4 text-xs tracking-[0.12em] uppercase font-bold font-body min-w-[200px] hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
         >
           Send Enquiry
         </button>
-        <p className="text-xs font-body text-driftwood mt-3">
+        <p className="text-xs font-body text-bark mt-3">
           All pricing provided is indicative. Formal quotes require owner approval.
         </p>
       </div>

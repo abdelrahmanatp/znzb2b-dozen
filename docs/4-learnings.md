@@ -133,3 +133,76 @@
 - Abbie actions still blocking outreach: PDPC registration, Meta WABA, Google Sheets service account, SendGrid + subdomain, 4 DPAs
 
 ---
+
+## 2026-05-08 — Sprint 3 Interactive Quote System (Planning complete, execution starting)
+
+**What was completed:**
+- Full pre-execution chain for Sprint 3 scope addition: /validator (4 rounds) → sprint placement decision → /sparring (GO WITH CONDITIONS) → both blockers resolved → sprint-3-deliverables.md written + approved by Abbie
+- Sprint renumbering: Sprint 3 = Interactive Quote System, Sprint 4 = email pipeline / Claude prompts / ChromaDB RAG, Sprint 5 = AI inbound sales rep
+- Implementation plan written at `docs/plans/2026-05-08-interactive-quote-system.md` (17 tasks)
+- Sprint 3 deliverables approved: `docs/sprints/sprint-3-deliverables.md` (Status: APPROVED)
+- Decisions log updated: `docs/3-decisions.md` — Sparring Gap Log appended with all 7 resolutions + 5 architectural decisions
+
+**Key architectural decisions:**
+- Session UUID in URL (`/quote/builder?s=uuid`) = primary persistence, no email required at launch
+- Google Sheets MVP: "Quote Drafts" tab (auto-save) + "Quote Submissions" tab (on submit)
+- Column A = UUID primary key; API reads column A range then row-by-index for O(n) lookup, capped at 5,000 rows
+- Combined paths = one merged row (both catalog items + room config in same submission)
+- Twilio WhatsApp for team alert; email fallback if WABA not active
+- Rate limiting: in-memory token bucket 10 req/min/IP on all API routes
+
+**What's next (execution order):**
+- Task 1: npm install googleapis twilio nodemailer zod
+- Tasks 2–7: lib/quote/ files (types, catalog, session, rateLimit, sheets, twilio, email)
+- Task 8: QuoteContext (React Context + useReducer + auto-save)
+- Tasks 9–14: UI components + pages
+- Tasks 15–16: API routes
+- Task 17: QA scenarios
+
+**Blockers for full E2E testing (code can be written, credentials needed before live test):**
+- GOOGLE_SERVICE_ACCOUNT_EMAIL + GOOGLE_PRIVATE_KEY + GOOGLE_SHEETS_QUOTE_ID
+- TWILIO_ACCOUNT_SID + TWILIO_AUTH_TOKEN + TWILIO_WHATSAPP_FROM + TWILIO_WHATSAPP_TO
+- SMTP_HOST/PORT/USER/PASS + TEAM_EMAIL
+- Google Sheets: "Quote Drafts" and "Quote Submissions" tabs must be created manually with headers before first API call
+
+---
+
+## 2026-05-08 — Sprint 3 Interactive Quote System (Execution complete)
+
+**What was completed:**
+- All 20 files created/modified: 7 lib/quote/ modules, 4 API routes, 6 components, 3 pages + 3 config/doc files
+- Routes delivered: /quote (3-path landing), /quote/builder, /quote/submit, /quote/view/[token] + 4 API routes
+- TypeScript: 0 errors. Production build: clean. All routes compiled.
+- 11 critical/high security + quality fixes applied during implementation
+
+**Security fixes applied:**
+- `sanitizeCell()` — formula injection guard for Sheets writes
+- `safeParse<T>()` — resilient JSON.parse with typed fallback
+- `esc()` — HTML-escape applied to all user strings in nodemailer HTML body
+- `stripControl()` — removes control chars from Twilio message body
+- Rate limiting added to ALL routes including GET endpoints
+- XFF first-IP-only (no spoofing via X-Forwarded-For chain)
+- `isValidSession` UUID v4 regex guard before any Sheets call
+- Zod `.max()` caps on all string fields and arrays
+- `await Promise.allSettled(notifications)` — prevents silent notification drop on serverless
+- `SAVE_START / SAVE_SUCCESS / SAVE_ERROR` actions — fixed infinite autosave loop
+- Removed `dynamic(() => ..., { ssr: false })` from Server Component — caused Turbopack build failure
+
+**Known deferred issues (Sprint 4/5):**
+- In-memory rate limiter not serverless-safe → replace with Upstash/Redis
+- Sheets O(n) full-scan → migrate to indexed lookup at scale
+- upsertDraft race condition → known Sheets-as-DB limitation
+- Tab ARIA completeness (missing aria-controls, keyboard nav)
+- Quote view page doesn't mark submission as 'viewed' on open
+- revalidate=60 doesn't apply to direct googleapis calls (needs unstable_cache)
+
+**Abbie actions required:**
+- Create `website/.env.local` from `.env.example` with real credentials
+- Create "Quote Drafts" tab (cols A-F) and "Quote Submissions" tab (cols A-M) in Google Sheet manually before first API call
+
+**What's next:**
+- Git commit Sprint 3
+- Lighthouse on /quote/builder (target: A11y ≥90, BP ≥90, SEO ≥90, Perf ≥85)
+- Sprint 4: Python email tools + Claude prompts + ChromaDB RAG
+
+---

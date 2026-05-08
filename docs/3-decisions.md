@@ -76,3 +76,44 @@
 - Implementation: Sprint 3. `ingest_catalog.py` will load the 7 `docs/catalog/*.md` files into ChromaDB. RAG queries go through a shared `rag_query.py` tool that all Claude-calling tools import.
 
 **Sprint 2 file:** `docs/sprints/sprint-2-deliverables.md` → status APPROVED 2026-05-08.
+
+---
+
+## Sprint 3 Scope Addition — Interactive Quote System — 2026-05-08
+
+### Sparring Gap Log
+
+**Blockers raised and resolved:**
+
+| # | Concern | Resolution |
+|---|---------|------------|
+| B1 | No customer confirmation at Sprint 3 launch (email stubbed) | **Resolved** — Session UUID in URL replaces email dependency. UUID generated on first builder visit, embedded in URL (`/quote/builder?s=uuid`), auto-saved to Sheets. Customer retrieves by returning to URL. Email confirmation wired in Sprint 4 when SendGrid is ready. |
+| B2 | Token retrieval via Google Sheets full-scan degrades at scale | **Resolved** — UUID stored in column A of "Quote Submissions" sheet. API reads column A range, finds row index, reads that row. Hard cap at 5,000 rows before archiving. Lookup ~200-300ms at scale — accepted for MVP. |
+
+**Major concerns and resolutions:**
+
+| # | Concern | Resolution |
+|---|---------|------------|
+| M1 | localStorage fragility on managed corporate devices | Server-side auto-save on every meaningful action (item add/remove, room count change). localStorage used only as fast local cache, not primary persistence. |
+| M2 | Twilio WABA dependency with no fallback | Email-only fallback to second team address defined. WhatsApp alert failure does not block submission processing or team notification. |
+| M3 | Custom size request field undefined | Freeform text input that appears inline when customer clicks "Request custom size" on an item. Captured as a string field in Sheets alongside item line. |
+| M4 | No rate limiting on submission API | Simple in-memory token bucket rate limiter on all submission routes. Idempotency key on POST prevents duplicate submissions. |
+| M5 | No amendment flow | "Edit and resubmit" on view page reloads quote into builder with new UUID. Original submission preserved as audit trail. |
+| M6 | Combined paths payload complexity | One merged Sheets row per submission. Catalog item columns + room config columns both present; empty where not used. Sprint 5 AI parser reads whichever are populated. |
+| M7 | WhatsApp message content unspecified | Template required as a defined artifact before API route is built. |
+
+**Architectural decisions made:**
+
+1. **Session UUID in URL** — primary persistence mechanism. No user accounts. No email required at Sprint 3 launch.
+2. **Google Sheets MVP** — no new database. "Quote Drafts" tab for in-progress, "Quote Submissions" tab for submitted. Schema designed for AI consumption from day one.
+3. **Twilio for WhatsApp** — user confirmed credentials available. SMS fallback considered but not needed; email fallback sufficient.
+4. **Combined paths = one merged payload** — not two linked submissions. Simpler schema, simpler AI parsing in Sprint 5.
+5. **Both paths in Sprint 3** — Add-to-Quote + Room Configurator both ship. Session UUID persistence removes the email blocker that would have justified deferring Room Configurator.
+
+**Sprint renumbering:**
+- Sprint 3 (was email pipeline) → renamed Sprint 4
+- Sprint 3 is now Interactive Quote System
+- Sprint 4: email pipeline, cold outreach, Claude prompts, ChromaDB RAG
+- Sprint 5: AI inbound sales rep (handles quote submissions + email replies)
+
+**Sprint 3 file:** `docs/sprints/sprint-3-deliverables.md` → status PENDING APPROVAL.

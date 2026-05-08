@@ -81,7 +81,7 @@ export default function BedLinenPage() {
   return (
     <>
       <nav aria-label="Breadcrumb" className="bg-linen border-b border-cloud py-3 px-5 md:px-8">
-        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-driftwood">
+        <ol className="max-w-site mx-auto flex items-center gap-2 text-xs font-body text-bark">
           <li><Link href="/" className="hover:text-onyx transition-colors duration-150">Home</Link></li>
           <li aria-hidden="true">/</li>
           <li><Link href="/products" className="hover:text-onyx transition-colors duration-150">Products</Link></li>
@@ -122,7 +122,7 @@ export default function BedLinenPage() {
                           ['Customization', product.customization],
                         ].map(([label, value]) => (
                           <tr key={label}>
-                            <th className="text-xs uppercase tracking-wider text-driftwood font-semibold bg-sand px-4 py-2 w-1/3 border-r border-cloud border-t border-cloud">
+                            <th className="text-xs uppercase tracking-wider text-bark font-semibold bg-sand px-4 py-2 w-1/3 border-r border-cloud border-t border-cloud">
                               {label}
                             </th>
                             <td className="text-sm text-bark px-4 py-3 border-t border-cloud">{value}</td>
@@ -133,7 +133,7 @@ export default function BedLinenPage() {
                   </div>
 
                   <p className="text-sm font-body font-medium text-terracotta mb-1">{product.priceRange}</p>
-                  <p className="text-xs font-body text-driftwood mb-4">
+                  <p className="text-xs font-body text-bark mb-4">
                     Indicative pricing — VAT not included. Contact us for a formal quote.
                   </p>
                   <p className="text-sm font-body text-bark italic border-l-2 border-gold pl-3 mb-4">
