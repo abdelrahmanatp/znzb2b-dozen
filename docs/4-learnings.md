@@ -206,3 +206,55 @@
 - Sprint 4: Python email tools + Claude prompts + ChromaDB RAG
 
 ---
+
+## 2026-05-08 — Sprint 4 Email Pipeline + ChromaDB RAG (Execution complete, pending commit)
+
+**What was completed:**
+- 6 Python tools written to `tools/`: `send_email.py`, `inbound_handler.py`, `bounce_handler.py`, `unsubscribe_handler.py`, `ingest_catalog.py`, `rag_query.py`
+- 6 Jinja2 prompt templates written to `tools/prompts/`: `cold_email_luxury.txt`, `cold_email_boutique.txt`, `cold_email_villa.txt`, `classify_inbound.txt`, `answer_question.txt`, `quote_request_reply.txt`
+- `tools/requirements.txt` updated: added openpyxl, google-auth, google-api-python-client, anthropic, chromadb, jinja2
+- `docs/sprints/sprint-4-deliverables.md` (APPROVED) and `docs/plans/2026-05-08-sprint-4-email-pipeline.md` written
+- 2 CRITICAL + 4 HIGH security fixes + 8 bug fixes applied across all 6 tools (parallel code-reviewer + security-auditor)
+
+**Security fixes applied:**
+- CRITICAL: Hardcoded `UNSUBSCRIBE_DEFAULT_SECRET` removed from send_email.py; now required from env (`Config._require`)
+- CRITICAL: `_sanitize_header()` applied to Subject + To in send_email.py and inbound_handler.py (email header injection prevention)
+- HIGH: `_wrap_untrusted()` wraps inbound email body in XML tags before Claude classify call (prompt injection defense)
+- HIGH: `--confirm-reset` flag required with `--reset` in ingest_catalog.py (destructive-action guard)
+- HIGH: `_write_output()` restricted to `_PROJECT_ROOT/tmp/drafts` only in inbound_handler.py (path traversal fix)
+- HIGH: Guarded `response.content[0].text` across all Claude calls (AttributeError on empty content blocks)
+
+**Bug fixes applied:**
+- bounce/unsubscribe handlers: `(str(row[col]) if row[col] is not None else "").strip().lower()` — None-cell crash fix
+- bounce/unsubscribe handlers: `from __future__ import annotations`, `sys.path.insert`, module-level `load_dotenv`, `list[list[Any]]` annotation
+- ingest_catalog.py: heading stored without `##` markers (regex group capture); `_flush(heading: str | None)`; exception logging on collection delete
+- rag_query.py: `(results.get("documents") or [[]])[0]` — guards empty Chroma response
+- send_email.py: `fetch_prospects` returns `(list, int)` — `skipped_no_email` was always 0 (filter-before-count bug)
+- inbound_handler.py: `query_catalog` wrapped in try/except with fallback reply; `contact_person.strip()`; `response.content` guard
+
+**Architecture decisions:**
+- ChromaDB PersistentClient (local, free) confirmed as vector store — ChromaDB ≥0.5 API used throughout
+- Collection name: `dozen_catalog`; chunk ID format: `{stem}__{slug}`; chunked by H2/H3 headings
+- Claude Haiku (`claude-haiku-4-5-20251001`) used for both classification (max_tokens=10) and Q&A (max_tokens=512)
+- Segment routing in send_email.py: LUXURY (resort/luxury/5-star keywords) → BOUTIQUE (hotel/boutique/lodge/safari) → VILLA (default)
+- SMTP: port 465 = `SMTP_SSL`, else STARTTLS; RFC 8058 `List-Unsubscribe-Post` header on all outbound
+
+**Known deferred issues (Sprint 5):**
+- Global `text-gold` contrast fix across all 13+ hero sections (Sprint 3 only fixed QuoteBuilderShell.tsx)
+- migrate_xlsx.py not yet written (spec at docs/architecture/migrate-xlsx-spec.md)
+- No end-to-end test with live credentials (blocked by Abbie provisioning actions below)
+
+**Abbie actions required:**
+- Provision Google Sheets service account + set `GOOGLE_SHEETS_CREDENTIALS` in `.env`
+- Set `GOOGLE_SHEETS_SPREADSHEET_ID` in `.env`
+- Set `ANTHROPIC_API_KEY` in `.env`
+- Set `UNSUBSCRIBE_SECRET` in `.env` (required for send_email.py — no default)
+- Set SMTP credentials (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `FROM_EMAIL`, `FROM_NAME`)
+- Create `tools/tmp/drafts/` directory for inbound_handler output-file path
+
+**What's next:**
+- Git commit Sprint 4
+- Smoke tests: `ingest_catalog.py --verbose`, `rag_query.py --query "..."`, `send_email.py --dry-run --limit 2`
+- Sprint 5: AI inbound sales rep (prospect discovery via Google Maps API, quote_sender.py, full conversation memory)
+
+---

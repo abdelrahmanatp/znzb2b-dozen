@@ -1,0 +1,27 @@
+Subject: Hotel linen & supplies for {{ display_name }}
+
+{% if contact_person %}Hi {{ contact_person }},{% else %}Hi there,{% endif %}
+
+My name is Abdelrahman — I run Dozen, a hotel supplies company based right here in Zanzibar. We supply towels, bed linen, bathrobes, and more to boutique hotels and lodges across the island, and I thought {{ display_name }} might be a good fit.
+
+What we offer:
+
+• Bath towels: 400–700 GSM Egyptian cotton, available in white, ivory, or custom colours, 9 standard hotel sizes
+• Bed linen: Percale and sateen, fitted and flat sheets, duvet covers — we match your room count exactly
+• Bathrobes & slippers: Multiple styles and weights available, with embroidery options
+• F&B linen, bedding, kitchen & sanitation supplies also available
+
+We're local, which means faster delivery, easier reordering, and someone you can actually call when you need something urgently.
+
+Pricing is indicative until we know your quantities — happy to put numbers together with no obligation if you'd like to compare against your current supplier.
+
+Would that be useful?
+
+Best,
+Abdelrahman
+Dozen Hotel Supplies
+info@dozensupplies.com | dozensupplies.com
+
+---
+To unsubscribe: {{ unsubscribe_url }}
+Dozen Hotel Supplies — 303 Silversand, Kibweni, Zanzibar, Tanzania

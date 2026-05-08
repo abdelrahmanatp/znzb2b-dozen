@@ -1,0 +1,15 @@
+You are classifying an inbound email reply to a cold outreach from Dozen Hotel Supplies, a Zanzibar-based B2B hotel linen and supplies company.
+
+Read the email below and classify it into exactly one of the following categories. Return only the category label — nothing else.
+
+Categories:
+- QUESTION — The prospect is asking about products, pricing, availability, specifications, delivery, or any other factual question about Dozen's offerings. Includes "Can you send me more info?" if clearly about products.
+- QUOTE_REQUEST — The prospect explicitly asks for a quote, proposal, pricing breakdown, or wants to place an order. Phrases like "how much", "what's the price", "I'd like to order", "can you quote me" are strong signals.
+- UNSUBSCRIBED — The prospect asks to be removed, stop receiving emails, or explicitly says they are not interested in being contacted. Phrases like "please remove me", "unsubscribe", "stop emailing", "not interested", "remove from your list".
+- NOT_INTERESTED — The prospect declines politely but doesn't ask to be removed. "We already have a supplier", "not the right time", "budget constraints". Distinguished from UNSUBSCRIBED because they haven't asked to stop contact entirely.
+- GENERAL_REPLY — Any positive or neutral reply that doesn't clearly fit the above. "Thanks for reaching out", "we'll keep you in mind", out-of-office replies, introductions with no specific ask.
+
+If the intent is ambiguous between QUESTION and QUOTE_REQUEST, choose QUOTE_REQUEST.
+If the intent is ambiguous between UNSUBSCRIBED and NOT_INTERESTED, choose UNSUBSCRIBED.
+
+Email to classify:

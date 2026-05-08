@@ -1,0 +1,25 @@
+Subject: Premium linen partnership for {{ display_name }}
+
+{% if contact_person %}Hi {{ contact_person }},{% else %}Hi there,{% endif %}
+
+I wanted to reach out because Dozen has been the trusted linen partner for several of Zanzibar's finest properties — including LUX*, Baraza Resort & Spa, Fundu Lagoon, and Neptune Hotels — and I thought {{ display_name }} would be a natural fit.
+
+We're an Egyptian-origin hotel supplies company based in Zanzibar, and we supply luxury-grade linen direct to properties across the island:
+
+• Bath towels: Egyptian cotton, 400–700 GSM, 9 standard sizes — white, ivory, and custom colours
+• Bed linen: High thread-count percale and sateen, fitted and flat sheets, duvet covers
+• Bathrobes: 5 styles from 300–500 GSM, embroidery and logo options available
+• Slippers, F&B linen, bedding, and kitchen & sanitation supplies also available
+
+Everything is priced indicatively and confirmed once we understand your exact quantities and spec requirements — there's no commitment involved in getting numbers.
+
+Would it make sense to have a brief call, or should I send over a pricing overview for the categories most relevant to {{ display_name }}?
+
+Best regards,
+Abdelrahman
+Dozen Hotel Supplies
+info@dozensupplies.com | dozensupplies.com
+
+---
+To stop receiving emails from us: {{ unsubscribe_url }}
+Dozen Hotel Supplies — 303 Silversand, Kibweni, Zanzibar, Tanzania

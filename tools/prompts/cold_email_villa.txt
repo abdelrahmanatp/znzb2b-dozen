@@ -1,0 +1,26 @@
+Subject: Quality linen for {{ display_name }} — local supplier
+
+{% if contact_person %}Hi {{ contact_person }},{% else %}Hi there,{% endif %}
+
+I'm Abdelrahman from Dozen — we supply hotel-quality towels, bed linen, and room amenities to villas, apartments, and guesthouses across Zanzibar.
+
+If you're currently importing linen or sourcing from outside the island, we can likely save you time and cost. We're local, stock a full range, and work with properties of all sizes — from single-villa rentals to larger guesthouses.
+
+Our most popular items for properties like {{ display_name }}:
+• Bath towels (400–600 GSM, white or ivory, multiple sizes)
+• Bed linen sets — fitted and flat sheets, duvet covers
+• Slippers and bathrobes if required
+• Kitchen and sanitation supplies
+
+No minimum order requirement for first-time customers. We work out pricing once we know what you need.
+
+If you'd like to see our full range or get a quick quote, just reply and I'll put something together.
+
+Best,
+Abdelrahman
+Dozen Hotel Supplies
+info@dozensupplies.com | dozensupplies.com
+
+---
+Unsubscribe: {{ unsubscribe_url }}
+Dozen Hotel Supplies — 303 Silversand, Kibweni, Zanzibar, Tanzania
