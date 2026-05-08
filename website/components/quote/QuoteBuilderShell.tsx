@@ -22,7 +22,7 @@ export default function QuoteBuilderShell() {
         {/* Builder header */}
         <div className="bg-terracotta-deep py-12 px-5 md:px-16">
           <div className="max-w-site mx-auto">
-            <p className="text-xs font-body font-bold uppercase tracking-[0.15em] text-gold mb-3">
+            <p className="text-xs font-body font-bold uppercase tracking-[0.15em] text-gold-light mb-3">
               Quote Builder
             </p>
             <h1 className="text-3xl md:text-4xl font-heading font-bold text-white">
@@ -36,10 +36,11 @@ export default function QuoteBuilderShell() {
 
         {/* Tab switcher */}
         <div className="bg-white border-b border-cloud">
-          <div className="max-w-site mx-auto px-5 md:px-16 flex gap-0">
+          <div role="tablist" className="max-w-site mx-auto px-5 md:px-16 flex gap-0">
             {(['catalog', 'rooms'] as Tab[]).map(tab => (
               <button
                 key={tab}
+                role="tab"
                 onClick={() => setActiveTab(tab)}
                 aria-selected={activeTab === tab}
                 className={`px-6 py-4 text-xs font-body font-bold uppercase tracking-[0.1em] border-b-2 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-inset ${
