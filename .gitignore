@@ -45,3 +45,18 @@ Thumbs.db
 
 # Claude session data
 .claude/session-data/
+
+# Tool-generated reports
+tools/dedup-report-*.json
+
+# Google service account key files (never commit credentials)
+*service-account*.json
+*credentials*.json
+service_account.json
+
+# Source data files containing personal data — not committed (PDPA)
+*.xlsx
+*.xls
+
+# Raw input documents (PDFs, source materials) — large binaries, not version-controlled
+_context/
