@@ -62,3 +62,17 @@
 | Email-first validation | Produce results in weeks; de-risk before 3-channel build |
 | Sales automation platform (Apollo/Lemlist) as outreach layer | Handles deliverability, CRM, compliance out of the box |
 | Inbound-first (website → AI agent) | No WABA cold-outreach compliance risk; leads are pre-qualified |
+
+---
+
+## Sprint 2 Planning Decisions — 2026-05-08
+
+**Sprint cadence:** 1-week sprints. Confirmed by Abbie.
+
+**Sprint 2 scope:** Website-only. Email pipeline tools and Claude prompts deferred to Sprint 3. Rationale: SendGrid + DNS setup not yet complete (Abbie action pending); website build is independent and can begin immediately.
+
+**Vector store:** ChromaDB (local, embedded). Confirmed 2026-05-08.
+- Rationale: runs alongside Python tools on the same server, zero cost, zero external dependency, no signup required. Sufficient for 7 catalog files. Pinecone evaluated and rejected as overkill for current scale and an unnecessary external SaaS dependency.
+- Implementation: Sprint 3. `ingest_catalog.py` will load the 7 `docs/catalog/*.md` files into ChromaDB. RAG queries go through a shared `rag_query.py` tool that all Claude-calling tools import.
+
+**Sprint 2 file:** `docs/sprints/sprint-2-deliverables.md` → status APPROVED 2026-05-08.

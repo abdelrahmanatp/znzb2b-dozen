@@ -717,7 +717,7 @@ Before starting any ambiguous task:
 
 **Project:** Dozen Hotel Supplies AI System (ZNZB2B)
 **Type:** B2B Sales AI + Website — automated outreach, inbound conversation handling, and product catalog website for a hotel supplies company
-**Stack:** Python (tools layer), Next.js 14+ App Router (website), Google Sheets (lead state database), Claude API + Anthropic SDK (AI layer), ChromaDB or Pinecone (vector store for RAG), SendGrid or SMTP (email delivery), Meta WABA (Phase 2 WhatsApp)
+**Stack:** Python (tools layer), Next.js 14+ App Router (website), Google Sheets (lead state database), Claude API + Anthropic SDK (AI layer), ChromaDB (vector store for RAG — confirmed 2026-05-08), SendGrid or SMTP (email delivery), Meta WABA (Phase 2 WhatsApp)
 **Scope:**
 - 522-prospect cold email outreach pipeline (3 segments: luxury resorts, boutique/lodges, villas/apartments/guesthouses)
 - AI inbound conversation handler — responds to prospect replies, qualifies leads, escalates quote requests to owner + sales manager

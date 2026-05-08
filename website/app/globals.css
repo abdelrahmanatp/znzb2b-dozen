@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/aspect-ratio";
+
+@theme {
+  /* Colors */
+  --color-linen: #F5F0E8;
+  --color-linen-light: #FAF8F5;
+  --color-linen-dark: #E8DFD0;
+  --color-sand: #E8DFD0;
+  --color-terracotta: #C4622D;
+  --color-terracotta-deep: #A34E22;
+  --color-terracotta-light: #F0D5C5;
+  --color-gold: #B8860B;
+  --color-gold-warm: #D4A017;
+  --color-gold-light: #F5E9C4;
+  --color-onyx: #1A1714;
+  --color-espresso: #2D2520;
+  --color-bark: #5C4A3A;
+  --color-driftwood: #8C7B6B;
+  --color-mist: #C4B8AB;
+  --color-cloud: #EDE8E1;
+  --color-success: #2D6A4F;
+  --color-success-light: #D8F0E6;
+  --color-warning: #92400E;
+  --color-warning-light: #FEF3C7;
+  --color-error: #991B1B;
+  --color-error-light: #FEE2E2;
+
+  /* Font families */
+  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  /* Font sizes */
+  --font-size-display: 4.5rem;
+  --line-height-display: 1.05;
+  --letter-spacing-display: -0.03em;
+
+  /* Max widths */
+  --max-w-site: 1280px;
+  --max-w-prose-lg: 72ch;
+  --max-w-narrow: 680px;
+
+  /* Box shadows */
+  --shadow-card: 0 2px 8px rgba(26, 23, 20, 0.06);
+  --shadow-card-hover: 0 8px 24px rgba(26, 23, 20, 0.10);
+  --shadow-nav: 0 1px 0 rgba(26, 23, 20, 0.08);
+
+  /* Keyframes */
+  --animate-fade-up: fade-up 0.4s ease-out forwards;
+  --animate-fade-in: fade-in 0.3s ease-out forwards;
+
+  /* Screens */
+  --breakpoint-xs: 375px;
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+:root {
+  --font-heading: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid #C4622D;
+  outline-offset: 3px;
+}
+
+.dark-bg :focus-visible {
+  outline-color: #F5F0E8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F5F0E8;
+  color: #1A1714;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}

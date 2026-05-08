@@ -113,3 +113,23 @@
 - Surface open Abbie decisions post-preflight: sprint cadence, vector store (ChromaDB vs Pinecone), reporting dashboard format, Ops Manual format
 
 ---
+
+## 2026-05-08 — Sprint 2 Website Build
+
+**What was completed:**
+- Full dozensupplies.com website built in `website/` (Next.js 14 App Router, Tailwind CSS, Framer Motion)
+- 17 routes: homepage, products index, 7 product category pages, /quote, /about, /privacy, /unsubscribe, /api/unsubscribe (dynamic), /_not-found
+- 7 components: Nav, Footer, HeroSection, SectionReveal, ProductCard, ClientLogo, QuoteForm
+- `npm run build` passes with zero errors — all non-API routes statically prerendered
+- useReducedMotion correctly implemented in HeroSection (makeVariants factory) and SectionReveal (whileInView scroll reveal)
+- Privacy page: full Tanzania PDPA 2022 compliance — legitimate interests lawful basis, 10 sections, data processors table, all 6 data subject rights
+- Unsubscribe page: Suspense boundary around useSearchParams, POST to /api/unsubscribe, success/error states, email+token URL params
+- All 7 product category pages: full catalog content loaded — specs, GSM, sizes, colors, customization, indicative pricing, pricing disclaimer
+- ChromaDB confirmed as vector store; Sprint 2 scoped website-only (email tools to Sprint 3)
+
+**What's next:**
+- Git commit Sprint 2 website
+- Sprint 3: send_email.py, inbound_handler.py, bounce_handler.py, unsubscribe_handler.py + Claude prompts + ChromaDB RAG (ingest_catalog.py, rag_query.py)
+- Abbie actions still blocking outreach: PDPC registration, Meta WABA, Google Sheets service account, SendGrid + subdomain, 4 DPAs
+
+---
