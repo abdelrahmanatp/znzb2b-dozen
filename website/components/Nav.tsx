@@ -48,7 +48,7 @@ export default function Nav() {
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled || !isHome || mobileOpen
           ? 'bg-white/95 backdrop-blur-md border-b border-mist shadow-nav'
-          : 'bg-[#021656]/70 backdrop-blur-sm border-b border-white/10'
+          : 'bg-terracotta-deep border-b border-white/10'
       }`}
     >
       <div className="max-w-site mx-auto px-5 md:px-16 h-[72px] flex items-center justify-between">
@@ -83,13 +83,17 @@ export default function Nav() {
           ))}
         </ul>
 
-        {/* Desktop CTA — solid navy */}
-        <div className="hidden md:block">
+        {/* Desktop CTA — teal, visually distinct */}
+        <div className="hidden md:flex items-center gap-3">
+          <span className="text-[10px] font-body font-bold uppercase tracking-[0.12em] text-gold-warm animate-pulse">
+            ●
+          </span>
           <Link
-            href="/quote"
-            className="inline-flex items-center justify-center gap-2 bg-terracotta text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body transition-colors duration-200 hover:bg-terracotta-deep focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none min-w-[160px]"
+            href="/quote/builder"
+            className="inline-flex items-center justify-center gap-2 bg-gold text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body transition-colors duration-200 hover:bg-gold-warm focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:outline-none min-w-[160px]"
           >
-            Request a Quote
+            Build Your Quote
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
 
@@ -134,12 +138,18 @@ export default function Nav() {
                 </li>
               ))}
             </ul>
-            <div className="mx-5 my-4">
+            <div className="mx-5 my-4 flex flex-col gap-2">
+              <Link
+                href="/quote/builder"
+                className="block w-full text-center bg-gold text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body hover:bg-gold-warm transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:outline-none"
+              >
+                Build Your Quote →
+              </Link>
               <Link
                 href="/quote"
-                className="block w-full text-center bg-terracotta text-white px-6 py-3 text-xs tracking-[0.12em] uppercase font-bold font-body hover:bg-terracotta-deep transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="block w-full text-center border border-mist text-bark px-6 py-2.5 text-xs tracking-[0.12em] uppercase font-bold font-body hover:border-onyx hover:text-onyx transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 focus-visible:outline-none"
               >
-                Request a Quote
+                Quick Quote Form
               </Link>
             </div>
           </motion.div>

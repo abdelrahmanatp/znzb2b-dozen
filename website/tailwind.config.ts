@@ -84,10 +84,15 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        'marquee-x': {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         'fade-up': 'fade-up 0.4s ease-out forwards',
         'fade-in': 'fade-in 0.3s ease-out forwards',
+        'marquee-x': 'marquee-x 45s linear infinite',
       },
       backgroundImage: {
         'editorial-gradient':

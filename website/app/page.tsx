@@ -1,21 +1,8 @@
 import Link from 'next/link'
 import HeroSection from '@/components/HeroSection'
-import ClientLogo from '@/components/ClientLogo'
+import PartnerSlider from '@/components/PartnerSlider'
 import ProductCard from '@/components/ProductCard'
 import SectionReveal from '@/components/SectionReveal'
-
-const clients = [
-  'TUI Blue',
-  'LUX* Resorts',
-  'Neptune Hotels',
-  'Baraza Resort & Spa',
-  'Fundu Lagoon',
-  'The Manta Resort',
-  'Zawadi Hotel',
-  'Chumbe Island',
-  'Matemwe Lodge',
-  'Zanzibar Collection',
-]
 
 const productCategories = [
   {
@@ -105,37 +92,103 @@ const whyDozen = [
   },
 ]
 
+const quotePaths = [
+  {
+    label: 'Quick Form',
+    href: '/quote',
+    title: 'Request a Quote',
+    description: 'Fill in your property details and what you need — we respond within 2 business days with pricing.',
+    icon: '✉',
+  },
+  {
+    label: 'Catalog Builder',
+    href: '/quote/builder',
+    title: 'Add Items to Quote',
+    description: 'Browse our full catalog, select quantities, request custom sizes, and build a detailed line-item quote.',
+    icon: '📋',
+  },
+  {
+    label: 'Room Configurator',
+    href: '/quote/builder',
+    title: 'Configure by Room',
+    description: 'Specify your property room-by-room — room count, category, laundry frequency — for a complete supply proposal.',
+    icon: '🏨',
+  },
+]
+
 export default function HomePage() {
   return (
     <>
       <HeroSection />
 
-      {/* Trusted-by — client logos */}
-      <section
-        className="bg-white py-16 md:py-20"
-        aria-label="Hotel clients who trust Dozen"
-      >
+      {/* Quote Builder Feature Spotlight */}
+      <section className="bg-terracotta-deep py-16 md:py-20" aria-label="Interactive quote builder">
         <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
-            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold text-center mb-10">
-              Trusted by 30+ Zanzibar Properties
+            <div className="flex items-center gap-3 mb-4">
+              <span className="inline-block px-3 py-1 text-[11px] font-body font-bold uppercase tracking-[0.14em] bg-gold text-white">
+                New Feature
+              </span>
+            </div>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.15em] text-gold-light mb-4">
+              Interactive Quote Builder
+            </p>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-white mb-5 max-w-[640px]">
+              Build your perfect quote in minutes.
+            </h2>
+            <p className="text-lg font-body text-white/75 mb-12 max-w-prose">
+              Three ways to get exactly the proposal you need — from a quick inquiry to a full room-by-room specification.
             </p>
           </SectionReveal>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
-            {clients.map((name, i) => (
-              <SectionReveal key={name} delay={i * 0.05}>
-                <ClientLogo name={name} />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10">
+            {quotePaths.map((path, i) => (
+              <SectionReveal key={path.label} delay={i * 0.08}>
+                <Link
+                  href={path.href}
+                  className="group flex flex-col h-full bg-white/5 hover:bg-white/10 border border-white/0 hover:border-gold/40 p-8 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-gold focus-visible:outline-none"
+                >
+                  <span className="text-2xl mb-5 block" aria-hidden="true">{path.icon}</span>
+                  <span className="text-[10px] font-body font-bold uppercase tracking-[0.14em] text-gold-light mb-2 block">
+                    {path.label}
+                  </span>
+                  <h3 className="text-xl font-heading font-semibold text-white mb-3 group-hover:text-gold-light transition-colors duration-200">
+                    {path.title}
+                  </h3>
+                  <p className="text-sm font-body text-white/60 leading-relaxed flex-1">
+                    {path.description}
+                  </p>
+                  <span className="mt-6 text-xs font-body font-bold uppercase tracking-[0.12em] text-gold-warm group-hover:text-gold-light transition-colors duration-200 inline-flex items-center gap-1">
+                    Get Started →
+                  </span>
+                </Link>
               </SectionReveal>
             ))}
-            <SectionReveal delay={clients.length * 0.05}>
-              <div className="bg-cloud border border-cloud p-4 flex items-center justify-center h-[100px] md:h-[120px]">
-                <span className="text-xs font-body font-bold uppercase tracking-[0.1em] text-bark text-center">
-                  + 20 more properties
-                </span>
-              </div>
-            </SectionReveal>
           </div>
+        </div>
+      </section>
+
+      {/* Partners — infinite slider */}
+      <section className="bg-white py-16 md:py-20" aria-label="Our hotel partners">
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <SectionReveal>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold text-center mb-2">
+              Our Partners
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-onyx text-center mb-10">
+              Trusted by Zanzibar&apos;s Leading Properties
+            </h2>
+          </SectionReveal>
+        </div>
+
+        <SectionReveal delay={0.1}>
+          <PartnerSlider />
+        </SectionReveal>
+
+        <div className="max-w-site mx-auto px-5 md:px-16 mt-6 text-center">
+          <p className="text-xs font-body text-driftwood">
+            + 20 more properties across Zanzibar
+          </p>
         </div>
       </section>
 
@@ -146,7 +199,7 @@ export default function HomePage() {
             <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
               Signature Collections
             </p>
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-4">
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-4">
               Our Product Range
             </h2>
             <p className="text-lg font-body text-bark max-w-prose-lg mb-12">
@@ -180,7 +233,7 @@ export default function HomePage() {
             <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
               Why Discerning Hotels Choose Dozen
             </p>
-            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-12">
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-12">
               Unrivaled Excellence in Every Detail
             </h2>
           </SectionReveal>
@@ -190,7 +243,7 @@ export default function HomePage() {
               <SectionReveal key={item.title} delay={i * 0.1}>
                 <div className="p-6 md:p-10">
                   <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
-                  <h3 className="text-xl font-heading font-semibold text-onyx mb-4">
+                  <h3 className="text-2xl font-heading font-semibold text-onyx mb-4">
                     {item.title}
                   </h3>
                   <p className="text-base font-body text-bark leading-relaxed">{item.body}</p>
@@ -209,7 +262,7 @@ export default function HomePage() {
               <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold-light mb-4">
                 Let&apos;s Design Your Guest Experience
               </p>
-              <h2 className="text-3xl md:text-4xl font-heading font-semibold text-white mb-6">
+              <h2 className="text-4xl md:text-5xl font-heading font-semibold text-white mb-6">
                 Ready to upgrade your property&apos;s linen?
               </h2>
               <p className="text-lg font-body text-white/75 mb-10 max-w-prose">
@@ -217,10 +270,10 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
-                  href="/quote"
-                  className="inline-flex items-center justify-center bg-white text-terracotta px-8 py-4 text-xs tracking-[0.12em] uppercase font-bold font-body min-w-[200px] hover:bg-terracotta-light transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-terracotta focus-visible:outline-none"
+                  href="/quote/builder"
+                  className="inline-flex items-center justify-center bg-gold text-white px-8 py-4 text-xs tracking-[0.12em] uppercase font-bold font-body min-w-[200px] hover:bg-gold-warm transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-terracotta focus-visible:outline-none"
                 >
-                  Get a Quote
+                  Build Your Quote →
                 </Link>
                 <Link
                   href="/products"
