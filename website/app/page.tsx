@@ -75,6 +75,16 @@ const productCategories = [
     category: 'Kitchen & Sanitation',
     image: '/images/kitchen-commercial.png',
   },
+  {
+    title: 'Kitchen & Laundry Equipment',
+    description:
+      'Commercial kitchen equipment via Garrana Group — Egypt\'s leading manufacturer. Cooking ranges, refrigeration, stainless-steel furniture, and industrial laundry. Full design, installation, and maintenance.',
+    href: '/quote',
+    productCount: undefined,
+    priceFrom: 'By enquiry — design & install',
+    category: 'Equipment',
+    image: '/images/kitchen-wash.png',
+  },
 ]
 
 const whyDozen = [
