@@ -7,7 +7,7 @@ import SectionReveal from '@/components/SectionReveal'
 export const metadata: Metadata = {
   title: 'About Dozen Hotel Supplies',
   description:
-    'Dozen Hotel Supplies is an Egyptian-origin company supplying premium linen to Zanzibar\'s hospitality market. Learn about our story, supply chain, and 30+ hotel clients.',
+    'Dozen Hotel Supplies is an Egyptian-origin company and sole East Africa distributor for Alazima, Hedjet, and Garrana Group. Premium linen, kitchen equipment, and full supply chain services for hotels, restaurants, and hospitals across Zanzibar.',
 }
 
 const clients = [
@@ -33,13 +33,15 @@ const productCategories = [
   'F&B Linen (tablecloths, napkins, chair covers)',
   'Bathrobes (terry, waffle, velour — M to XXL)',
   'Slippers (terry, waffle, velour — OSFA)',
-  'Kitchen & Sanitation (kitchen towels, glass cloths, dusters)',
+  'Kitchen & Sanitation Textiles (kitchen towels, glass cloths, dusters)',
+  'Kitchen & Laundry Equipment (Garrana — design, supply & install)',
 ]
 
 const stats = [
   { value: '300+', label: 'Product SKUs' },
-  { value: '98%', label: 'Quality Assurance' },
   { value: '30+', label: 'Properties Supplied' },
+  { value: '1995', label: 'Manufacturing Est.' },
+  { value: '4', label: 'Global Regions' },
 ]
 
 export default function AboutPage() {
@@ -119,6 +121,18 @@ export default function AboutPage() {
                     survive commercial laundry at 60–80°C, daily turnover, and the coastal humidity of the Swahili
                     coast.
                   </p>
+                  <p>
+                    For textiles, we are the sole East Africa distributor for <strong className="font-semibold text-onyx">Alazima</strong> and <strong className="font-semibold text-onyx">Hedjet</strong> — two of Egypt&apos;s
+                    most respected hospitality textile manufacturers, operating since 1995. Their products serve hotels
+                    across Africa, Europe, the USA, and the MENA region. We bring the same factory-direct quality to
+                    Zanzibar that international hotel groups have relied on for decades.
+                  </p>
+                  <p>
+                    For kitchen, bakery, and laundry equipment, we are the sole East Africa distributor for{' '}
+                    <strong className="font-semibold text-onyx">Garrana Group</strong> — Egypt&apos;s leading manufacturer of commercial kitchen
+                    solutions. We design, fabricate, supply, install, commission, and maintain complete kitchen and
+                    laundry operations for hotels, resorts, restaurants, bakeries, and hospitals across the region.
+                  </p>
                 </div>
               </div>
             </SectionReveal>
@@ -174,6 +188,73 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Manufacturing Partners */}
+      <section className="bg-white py-16 md:py-24">
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <SectionReveal>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Factory Partnerships
+            </p>
+            <h2 className="text-3xl md:text-4xl font-heading font-semibold text-onyx mb-4">
+              Our Manufacturing Partners
+            </h2>
+            <p className="text-lg font-body text-bark mb-10 max-w-prose-lg">
+              Sole distributor relationships with two of Egypt&apos;s most respected manufacturers — giving our clients direct access to factory pricing and quality without intermediaries.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Alazima & Hedjet */}
+            <SectionReveal delay={0.05}>
+              <div className="bg-linen border border-cloud p-8 md:p-10 h-full">
+                <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
+                <p className="text-[10px] font-body font-bold uppercase tracking-[0.14em] text-gold mb-2">
+                  Textiles — Sole East Africa Distributor
+                </p>
+                <h3 className="text-2xl font-heading font-semibold text-onyx mb-4">
+                  Alazima &amp; Hedjet
+                </h3>
+                <p className="text-sm font-body text-bark leading-relaxed mb-6">
+                  Established in 1995, Alazima and Hedjet are among Egypt&apos;s most trusted hospitality textile manufacturers. Their product range — bath towels, bed linen, bathrobes, and F&B linen — is specified by hotel groups across <strong className="font-medium text-onyx">Africa, Europe, the USA, and the MENA region</strong>. As their sole distributor in East Africa, we deliver the same factory-grade quality and verified GSM specifications to Zanzibar properties of all sizes.
+                </p>
+                <ul className="space-y-2">
+                  {['Bath towels, hand towels, bath sheets', 'Bed linen — sheets, pillowcases, duvet covers', 'Bathrobes — terry, waffle, velour', 'F&B linen — tablecloths, napkins'].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-sm font-body text-bark">
+                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </SectionReveal>
+
+            {/* Garrana Group */}
+            <SectionReveal delay={0.1}>
+              <div className="bg-linen border border-cloud p-8 md:p-10 h-full">
+                <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
+                <p className="text-[10px] font-body font-bold uppercase tracking-[0.14em] text-gold mb-2">
+                  Kitchen &amp; Laundry Equipment — Sole East Africa Distributor
+                </p>
+                <h3 className="text-2xl font-heading font-semibold text-onyx mb-4">
+                  Garrana Group
+                </h3>
+                <p className="text-sm font-body text-bark leading-relaxed mb-6">
+                  Garrana is Egypt&apos;s leading manufacturer of commercial kitchen and laundry equipment, meeting international standards across cooking, refrigeration, and stainless-steel fabrication. As their sole East Africa distributor, we offer the <strong className="font-medium text-onyx">full project lifecycle</strong> — design, fabrication, supply, installation, commissioning, and ongoing maintenance — for hotels, restaurants, bakeries, hospitals, and food service operations.
+                </p>
+                <ul className="space-y-2">
+                  {['Cooking equipment — gas and electric ranges', 'Refrigeration — walk-ins and reach-ins', 'Stainless-steel furniture — sinks, tables, shelves, trolleys', 'Industrial dishwashers and laundry equipment'].map(item => (
+                    <li key={item} className="flex items-start gap-3 text-sm font-body text-bark">
+                      <span className="text-gold mt-0.5 shrink-0" aria-hidden="true">—</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
       {/* What We Supply */}
       <section className="bg-sand py-16 md:py-24">
         <div className="max-w-site mx-auto px-5 md:px-16">
@@ -185,7 +266,7 @@ export default function AboutPage() {
               What We Supply
             </h2>
             <p className="text-lg font-body text-bark mb-10 max-w-prose-lg">
-              Seven product categories covering every linen and textile need across a hotel property.
+              Eight product and equipment categories serving hotels, resorts, restaurants, hospitals, bakeries, and food service operations across Zanzibar and East Africa.
             </p>
           </SectionReveal>
 

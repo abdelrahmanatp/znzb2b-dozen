@@ -98,7 +98,7 @@ const quotePaths = [
     href: '/quote',
     title: 'Request a Quote',
     description: 'Fill in your property details and what you need — we respond within 2 business days with pricing.',
-    icon: '✉',
+    icon: '📬',
   },
   {
     label: 'Catalog Builder',
