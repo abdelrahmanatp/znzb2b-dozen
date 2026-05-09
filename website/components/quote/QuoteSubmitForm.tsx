@@ -43,9 +43,21 @@ export default function QuoteSubmitForm() {
     setError(null)
 
     try {
-      // Load current draft to get cart + room config
-      const draftRes = await fetch(`/api/quote/draft/${session}`)
-      const { draft } = await draftRes.json()
+      // Read cart from localStorage first (always available, no Sheets dependency)
+      let draft: { cartItems: unknown[]; roomConfig: unknown } | null = null
+      try {
+        const raw = localStorage.getItem(`dozen-quote-${session}`)
+        if (raw) draft = JSON.parse(raw)
+      } catch { /* ignore parse errors */ }
+
+      // Fallback to Sheets if localStorage is empty (e.g. different device)
+      if (!draft) {
+        const draftRes = await fetch(`/api/quote/draft/${session}`)
+        if (draftRes.ok) {
+          const data = await draftRes.json()
+          draft = data.draft ?? null
+        }
+      }
 
       if (!draft) {
         setError('Could not find your quote. Please go back and rebuild it.')

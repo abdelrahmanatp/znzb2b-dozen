@@ -158,6 +158,17 @@ export function QuoteProvider({
     }
   }, [state.session, state.isDirty, state.cartItems, state.roomConfig])
 
+  // Persist cart to localStorage on every change so submit page can read it
+  useEffect(() => {
+    if (!state.session) return
+    try {
+      localStorage.setItem(
+        `dozen-quote-${state.session}`,
+        JSON.stringify({ cartItems: state.cartItems, roomConfig: state.roomConfig })
+      )
+    } catch { /* storage unavailable — silent */ }
+  }, [state.session, state.cartItems, state.roomConfig])
+
   // Debounced auto-save: 2s after last change
   useEffect(() => {
     if (!state.isDirty) return
