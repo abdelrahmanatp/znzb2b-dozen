@@ -124,7 +124,7 @@ export default function HeroSection() {
             variants={makeVariants(0.48, prefersReduced)}
             initial="hidden"
             animate="visible"
-            className="mt-14 pt-10 border-t border-white/15 grid grid-cols-2 sm:grid-cols-3 gap-8 max-w-md"
+            className="mt-14 pt-10 border-t border-white/15 grid grid-cols-3 gap-6 md:gap-12"
           >
             {[
               { value: '30+', label: 'Properties Supplied' },
@@ -132,8 +132,13 @@ export default function HeroSection() {
               { value: '15+', label: 'Years Experience' },
             ].map(({ value, label }) => (
               <div key={label}>
-                <p className="text-2xl font-heading font-bold text-white">{value}</p>
-                <p className="text-xs font-body uppercase tracking-[0.1em] mt-1" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                <p
+                  className="font-heading font-bold leading-none"
+                  style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: '#74F6F6' }}
+                >
+                  {value}
+                </p>
+                <p className="text-xs font-body uppercase tracking-[0.12em] mt-2" style={{ color: 'rgba(255,255,255,0.60)' }}>
                   {label}
                 </p>
               </div>

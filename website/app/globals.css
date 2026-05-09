@@ -64,6 +64,11 @@
   100% { opacity: 1; }
 }
 
+@keyframes marquee-x {
+  0%   { -webkit-transform: translateX(0%);   transform: translateX(0%); }
+  100% { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
+}
+
 :root {
   --font-heading: var(--font-playfair), Georgia, serif;
   --font-body: var(--font-manrope), system-ui, sans-serif;

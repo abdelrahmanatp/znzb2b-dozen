@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useReducedMotion } from 'framer-motion'
 
 interface Partner {
@@ -60,43 +60,61 @@ function PartnerCard({ partner }: { partner: Partner }) {
 
 export default function PartnerSlider() {
   const prefersReduced = useReducedMotion()
+  const [paused, setPaused] = useState(false)
+  const trackRef = useRef<HTMLDivElement>(null)
   const doubled = [...partners, ...partners]
 
   if (prefersReduced) {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-        {partners.map((p) => (
-          <PartnerCard key={p.domain} partner={p} />
-        ))}
+      <div className="max-w-site mx-auto px-5 md:px-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          {partners.map((p) => (
+            <PartnerCard key={p.domain} partner={p} />
+          ))}
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div
+      className="relative overflow-hidden"
+      style={{ overflowX: 'hidden' }}
+    >
       {/* Edge fade masks */}
       <div
-        className="absolute left-0 top-0 bottom-0 w-16 md:w-24 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }}
+        className="absolute left-0 top-0 bottom-0 w-12 md:w-24 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to right, #ffffff 60%, transparent)' }}
         aria-hidden="true"
       />
       <div
-        className="absolute right-0 top-0 bottom-0 w-16 md:w-24 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }}
+        className="absolute right-0 top-0 bottom-0 w-12 md:w-24 z-10 pointer-events-none"
+        style={{ background: 'linear-gradient(to left, #ffffff 60%, transparent)' }}
         aria-hidden="true"
       />
 
-      {/* Marquee track */}
+      {/* Marquee track — inline style for cross-browser / iOS Safari compat */}
       <div
-        className="flex gap-4 w-max animate-[marquee-x_45s_linear_infinite] hover:[animation-play-state:paused]"
+        ref={trackRef}
+        className="flex gap-4 py-2"
+        style={{
+          width: 'max-content',
+          animation: 'marquee-x 45s linear infinite',
+          animationPlayState: paused ? 'paused' : 'running',
+          willChange: 'transform',
+        }}
         aria-hidden="true"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+        onTouchEnd={() => setPaused(false)}
       >
         {doubled.map((p, i) => (
           <PartnerCard key={`${p.domain}-${i}`} partner={p} />
         ))}
       </div>
 
-      {/* Accessible list hidden from view but available to screen readers */}
+      {/* Screen-reader accessible list */}
       <ul className="sr-only">
         {partners.map((p) => (
           <li key={p.domain}>

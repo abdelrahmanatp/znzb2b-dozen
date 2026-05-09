@@ -121,7 +121,93 @@ export default function HomePage() {
     <>
       <HeroSection />
 
-      {/* Quote Builder Feature Spotlight */}
+      {/* 1 — Signature Collections — product cards */}
+      <section className="bg-linen py-16 md:py-24">
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <SectionReveal>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Signature Collections
+            </p>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-4">
+              Our Product Range
+            </h2>
+            <p className="text-lg font-body text-bark max-w-prose-lg mb-12">
+              Hospitality-grade linen and supplies, sourced to spec for Zanzibar properties.
+            </p>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            {productCategories.map((cat, i) => (
+              <SectionReveal key={cat.title} delay={i * 0.06}>
+                <ProductCard {...cat} />
+              </SectionReveal>
+            ))}
+          </div>
+
+          <SectionReveal delay={0.2} className="mt-10">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-xs font-body font-bold uppercase tracking-[0.12em] text-terracotta border-b border-terracotta pb-0.5 hover:text-terracotta-deep hover:border-terracotta-deep transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:outline-none"
+            >
+              View All Categories →
+            </Link>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* 2 — Why Dozen — editorial reason columns */}
+      <section className="bg-sand py-16 md:py-24">
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <SectionReveal>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
+              Why Discerning Hotels Choose Dozen
+            </p>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-12">
+              Unrivaled Excellence in Every Detail
+            </h2>
+          </SectionReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-mist">
+            {whyDozen.map((item, i) => (
+              <SectionReveal key={item.title} delay={i * 0.1}>
+                <div className="p-6 md:p-10">
+                  <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
+                  <h3 className="text-2xl font-heading font-semibold text-onyx mb-4">
+                    {item.title}
+                  </h3>
+                  <p className="text-base font-body text-bark leading-relaxed">{item.body}</p>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — Partners — infinite slider */}
+      <section className="bg-white py-16 md:py-20" aria-label="Our hotel partners">
+        <div className="max-w-site mx-auto px-5 md:px-16">
+          <SectionReveal>
+            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold text-center mb-2">
+              Our Partners
+            </p>
+            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-onyx text-center mb-10">
+              Trusted by Zanzibar&apos;s Leading Properties
+            </h2>
+          </SectionReveal>
+        </div>
+
+        <SectionReveal delay={0.1}>
+          <PartnerSlider />
+        </SectionReveal>
+
+        <div className="max-w-site mx-auto px-5 md:px-16 mt-6 text-center">
+          <p className="text-xs font-body text-driftwood">
+            + 20 more properties across Zanzibar
+          </p>
+        </div>
+      </section>
+
+      {/* 4 — Quote Builder Feature Spotlight */}
       <section className="bg-terracotta-deep py-16 md:py-20" aria-label="Interactive quote builder">
         <div className="max-w-site mx-auto px-5 md:px-16">
           <SectionReveal>
@@ -168,93 +254,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Partners — infinite slider */}
-      <section className="bg-white py-16 md:py-20" aria-label="Our hotel partners">
-        <div className="max-w-site mx-auto px-5 md:px-16">
-          <SectionReveal>
-            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold text-center mb-2">
-              Our Partners
-            </p>
-            <h2 className="text-2xl md:text-3xl font-heading font-semibold text-onyx text-center mb-10">
-              Trusted by Zanzibar&apos;s Leading Properties
-            </h2>
-          </SectionReveal>
-        </div>
-
-        <SectionReveal delay={0.1}>
-          <PartnerSlider />
-        </SectionReveal>
-
-        <div className="max-w-site mx-auto px-5 md:px-16 mt-6 text-center">
-          <p className="text-xs font-body text-driftwood">
-            + 20 more properties across Zanzibar
-          </p>
-        </div>
-      </section>
-
-      {/* Signature Collections — product cards */}
-      <section className="bg-linen py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-16">
-          <SectionReveal>
-            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
-              Signature Collections
-            </p>
-            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-4">
-              Our Product Range
-            </h2>
-            <p className="text-lg font-body text-bark max-w-prose-lg mb-12">
-              Hospitality-grade linen and supplies, sourced to spec for Zanzibar properties.
-            </p>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {productCategories.map((cat, i) => (
-              <SectionReveal key={cat.title} delay={i * 0.06}>
-                <ProductCard {...cat} />
-              </SectionReveal>
-            ))}
-          </div>
-
-          <SectionReveal delay={0.2} className="mt-10">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 text-xs font-body font-bold uppercase tracking-[0.12em] text-terracotta border-b border-terracotta pb-0.5 hover:text-terracotta-deep hover:border-terracotta-deep transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:outline-none"
-            >
-              View All Categories →
-            </Link>
-          </SectionReveal>
-        </div>
-      </section>
-
-      {/* Why Dozen — editorial reason columns */}
-      <section className="bg-sand py-16 md:py-24">
-        <div className="max-w-site mx-auto px-5 md:px-16">
-          <SectionReveal>
-            <p className="text-xs font-body font-bold uppercase tracking-[0.12em] text-gold mb-3">
-              Why Discerning Hotels Choose Dozen
-            </p>
-            <h2 className="text-4xl md:text-5xl font-heading font-semibold text-onyx mb-12">
-              Unrivaled Excellence in Every Detail
-            </h2>
-          </SectionReveal>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-mist">
-            {whyDozen.map((item, i) => (
-              <SectionReveal key={item.title} delay={i * 0.1}>
-                <div className="p-6 md:p-10">
-                  <div className="w-8 h-[2px] bg-gold mb-6" aria-hidden="true" />
-                  <h3 className="text-2xl font-heading font-semibold text-onyx mb-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-base font-body text-bark leading-relaxed">{item.body}</p>
-                </div>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA — navy dark section */}
+      {/* 5 — CTA — navy dark section */}
       <section className="bg-terracotta py-16 md:py-24">
         <div className="max-w-site mx-auto px-5 md:px-16">
           <div className="max-w-[600px]">
