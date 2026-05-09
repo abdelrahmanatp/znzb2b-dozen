@@ -37,7 +37,7 @@ export default function QuotePage() {
     <>
       <div className="relative bg-terracotta-deep overflow-hidden py-20 md:py-28 min-h-[280px] flex items-end">
         <Image
-          src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=60&auto=format&fit=crop&fm=webp"
+          src="/images/bed-linen-hotel-room.png"
           alt=""
           fill
           priority

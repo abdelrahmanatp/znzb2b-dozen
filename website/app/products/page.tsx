@@ -18,7 +18,7 @@ const productCategories = [
     productCount: 6,
     priceFrom: 'From USD $0.95 / unit',
     category: 'Bath Towels',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80&auto=format&fit=crop',
+    image: '/images/towels-stack.png',
   },
   {
     title: 'Bed Linen',
@@ -28,7 +28,7 @@ const productCategories = [
     productCount: 5,
     priceFrom: 'From USD $13.04 / sheet',
     category: 'Bed Linen',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80&auto=format&fit=crop',
+    image: '/images/bed-linen-white.png',
   },
   {
     title: 'Bedding',
@@ -38,7 +38,7 @@ const productCategories = [
     productCount: 8,
     priceFrom: 'From USD $2.00 / protector',
     category: 'Bedding',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80&auto=format&fit=crop',
+    image: '/images/bedding-throw.png',
   },
   {
     title: 'F&B Linen',
@@ -58,7 +58,7 @@ const productCategories = [
     productCount: 3,
     priceFrom: 'From USD $21.00 / robe',
     category: 'Bathrobes',
-    image: 'https://images.unsplash.com/photo-1600011689032-8b628b8a8747?w=800&q=80&auto=format&fit=crop',
+    image: '/images/bathrobes-colored.png',
   },
   {
     title: 'Slippers',
@@ -68,7 +68,7 @@ const productCategories = [
     productCount: 3,
     priceFrom: 'From USD $1.10 / pair',
     category: 'Slippers',
-    image: 'https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80&auto=format&fit=crop',
+    image: '/images/slippers-basket.png',
   },
   {
     title: 'Kitchen & Sanitation',
@@ -78,7 +78,7 @@ const productCategories = [
     productCount: 4,
     priceFrom: 'From USD $6.00 / dozen',
     category: 'Kitchen & Sanitation',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80&auto=format&fit=crop',
+    image: '/images/kitchen-commercial.png',
   },
 ]
 
@@ -88,7 +88,7 @@ export default function ProductsPage() {
       {/* Editorial page header — dark navy with image */}
       <div className="relative bg-terracotta-deep overflow-hidden py-20 md:py-28 min-h-[320px] flex items-end">
         <Image
-          src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=60&auto=format&fit=crop&fm=webp"
+          src="/images/towels-hanging.png"
           alt=""
           fill
           priority
