@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CheckCircle, Loader2, MessageCircle, Send, X } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -251,7 +252,21 @@ export default function ChatWidget() {
                             : 'bg-stone-100 text-stone-800 rounded-2xl rounded-bl-sm'
                         }`}
                       >
-                        {msg.content}
+                        {isUser ? (
+                          msg.content
+                        ) : (
+                          <ReactMarkdown
+                            components={{
+                              p: ({ children }) => <p className="mb-1.5 last:mb-0">{children}</p>,
+                              strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+                              ul: ({ children }) => <ul className="mt-1 mb-1.5 space-y-0.5 pl-4 list-disc">{children}</ul>,
+                              ol: ({ children }) => <ol className="mt-1 mb-1.5 space-y-0.5 pl-4 list-decimal">{children}</ol>,
+                              li: ({ children }) => <li className="leading-snug">{children}</li>,
+                            }}
+                          >
+                            {msg.content}
+                          </ReactMarkdown>
+                        )}
                       </div>
                     )}
                   </div>
