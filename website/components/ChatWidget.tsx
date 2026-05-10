@@ -13,11 +13,11 @@ interface Message {
 const WELCOME_MESSAGE: Message = {
   role: 'assistant',
   content:
-    "Hi! I'm Rehema from Dozen Hotel Supplies. I can help you find the right linen, towels, or amenities for your property — what are you looking for?",
+    "Hi! I'm Diana from Dozen Hotel Supplies. I can help you find the right linen, towels, or amenities for your property — what are you looking for?",
 };
 
-const SESSION_KEY = 'rehema_session';
-const HISTORY_KEY = 'rehema_history';
+const SESSION_KEY = 'diana_session';
+const HISTORY_KEY = 'diana_history';
 const HISTORY_CAP = 40;
 
 function generateSessionId(): string {
@@ -202,7 +202,7 @@ export default function ChatWidget() {
                 R
               </div>
               <div>
-                <p className="text-white font-semibold text-sm leading-tight">Rehema</p>
+                <p className="text-white font-semibold text-sm leading-tight">Diana</p>
                 <p className="text-amber-200 text-xs leading-tight">Dozen Hotel Supplies</p>
               </div>
             </div>
