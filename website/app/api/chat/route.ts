@@ -85,7 +85,8 @@ export async function POST(req: Request): Promise<Response> {
               name: string
               hotel: string
               email: string
-              product_interest?: string
+              product_interest: string
+              room_count: string
             }
 
             let sheetsOk = false
@@ -94,7 +95,8 @@ export async function POST(req: Request): Promise<Response> {
                 name: input.name,
                 hotel: input.hotel,
                 email: input.email,
-                productInterest: input.product_interest ?? '',
+                productInterest: input.product_interest,
+                roomCount: input.room_count,
                 sessionId,
               })
               sheetsOk = true

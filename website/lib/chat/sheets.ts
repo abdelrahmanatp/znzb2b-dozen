@@ -20,6 +20,7 @@ export interface ChatLead {
   hotel: string
   email: string
   productInterest: string
+  roomCount: string
   sessionId: string
 }
 
@@ -42,7 +43,7 @@ export async function submitChatLead(lead: ChatLead): Promise<void> {
     JSON.stringify([]),
     '',
     0,
-    '',
+    sanitize(lead.roomCount),
     sanitize(lead.productInterest),
     'new',
   ]
