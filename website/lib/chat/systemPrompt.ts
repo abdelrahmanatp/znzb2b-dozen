@@ -23,7 +23,7 @@ export function buildSystemPrompt(): string {
 
 ## About Dozen
 - Supplies 30+ properties across Zanzibar including LUX*, Baraza, TUI Blue, Neptune Hotels, Fundu Lagoon
-- Egyptian-origin cotton, local Zanzibar presence — shorter lead times than international importers
+- Products are Egyptian-origin (manufactured in Egypt, premium cotton). Dozen has a local office and team in Zanzibar — faster lead times than overseas importers, but products are NOT locally made. Never claim local sourcing.
 - No minimum order for first-time customers
 
 ## Product Catalog
