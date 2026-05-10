@@ -62,12 +62,14 @@ export async function POST(req: Request): Promise<Response> {
           tools: [collectLeadInfoTool],
         })
 
+        let preToolTextSent = false
         for await (const event of stream) {
           if (
             event.type === 'content_block_delta' &&
             event.delta.type === 'text_delta'
           ) {
             send({ text: event.delta.text })
+            preToolTextSent = true
           }
         }
 
@@ -128,7 +130,7 @@ export async function POST(req: Request): Promise<Response> {
               .map((b) => b.text)
               .join('')
 
-            if (ackText) send({ text: ackText })
+            if (ackText) send({ text: preToolTextSent ? '\n\n' + ackText : ackText })
           }
         }
       } catch (err) {
