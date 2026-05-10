@@ -21,5 +21,6 @@ Dozen Hotel Supplies
 info@dozensupplies.com | dozensupplies.com
 
 ---
-To stop receiving emails from us: {{ unsubscribe_url }}
+We found your details via public hospitality directories. We're contacting you on the basis of our legitimate business interest in reaching relevant hospitality buyers (Tanzania PDPA 2022, §25). You have the right to access, correct, or delete your data — privacy policy: dozensupplies.com/privacy | data enquiries: privacy@dozensupplies.com
+To stop receiving emails: {{ unsubscribe_url }}
 Dozen Hotel Supplies — 303 Silversand, Kibweni, Zanzibar, Tanzania
