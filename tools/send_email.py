@@ -540,7 +540,7 @@ def run(args: argparse.Namespace, config: Config) -> int:
             print(f"To:      {prospect.email}")
             print(f"Segment: {segment}")
             print(f"Subject: {subject}")
-            print(f"{'─' * 72}")
+            print(f"{'-' * 72}")
             print(body)
             sent_count += 1
             continue

@@ -293,7 +293,7 @@ def check_existing_state(
     Return one of: 'empty', 'complete', 'partial'.
     'complete' means 521 data rows already present with correct No. sequence.
     """
-    values = read_sheet_values(service, spreadsheet_id, f"{sheet_name}!A:A")
+    values = read_sheet_values(service, spreadsheet_id, f"'{sheet_name}'!A:A")
     # values[0] would be the header row if present
     data_count = max(0, len(values) - 1)
     _vprint(verbose, f"Existing row count (data only): {data_count}")
@@ -339,7 +339,7 @@ def write_all_rows(
     for raw_row in data_rows:
         all_rows.append(transform_row(list(raw_row)))
 
-    target_range = f"{sheet_name}!A1:U{len(all_rows)}"
+    target_range = f"'{sheet_name}'!A1:U{len(all_rows)}"
 
     _vprint(verbose, f"Writing {len(all_rows)} rows to {target_range} ...")
 
@@ -451,7 +451,7 @@ def validate_postwrite(
     service, spreadsheet_id: str, sheet_name: str, verbose: bool
 ) -> None:
     """Run all 5 post-write checks. Prints failure details and exits on failure."""
-    all_values = read_sheet_values(service, spreadsheet_id, f"{sheet_name}!A1:U522")
+    all_values = read_sheet_values(service, spreadsheet_id, f"'{sheet_name}'!A1:U522")
     total_rows = len(all_values)
 
     failed = False
@@ -658,7 +658,7 @@ def main() -> None:
 
     if existing == "partial" and not args.force:
         existing_count = len(
-            read_sheet_values(service, spreadsheet_id, f"{sheet_name}!A:A")
+            read_sheet_values(service, spreadsheet_id, f"'{sheet_name}'!A:A")
         ) - 1
         print(
             f"WARN: Partial data found ({existing_count} rows). "
